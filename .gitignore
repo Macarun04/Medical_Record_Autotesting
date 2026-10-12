@@ -1,0 +1,14 @@
+# Virtual environment & dependencies
+venv/
+.venv/
+node_modules/
+
+# Cache & Logs
+__pycache__/
+*.log
+
+# Environment secrets
+.env
+
+# Editor settings
+.vscode/
