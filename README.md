@@ -271,3 +271,19 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
         "chuyenKhoa": "Ngoại khoa" 
     }
 ]
+------------------------
+
+# POM
+Dự án áp dụng chặt chẽ mẫu thiết kế Page Object Model để tách biệt giao diện và kịch bản test:
+
+#pages/base_page.py: Chứa các hàm tương tác chung (click, fill, wait) dùng chung cho mọi trang.
+
+pages/login_page.py: Đóng gói locator và hành vi của Màn hình 1 (Đăng nhập).
+
+pages/search_page.py: Đóng gói locator của Màn hình 2 (Tra cứu CCCD).
+
+pages/timeline_page.py: Đóng gói locator của Màn hình 3 (Timeline bệnh án).
+
+pages/add_record_page.py: Đóng gói locator của Màn hình 4 (Thêm ca khám mới).
+
+Lưu ý: Nếu UI của SUT thay đổi, chỉ cần cập nhật locator trong thư mục pages/, các file kịch bản trong thư mục tests/e2e/ được giữ nguyên.
