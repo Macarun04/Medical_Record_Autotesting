@@ -7,7 +7,9 @@ Xây dựng và triển khai hệ thống kiểm thử tự động cho website 
 Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - tenDangNhap: VARCHAR (50) NOT NULL, UNIQUE (Dùng làm ID đăng nhập)
 - matKhau: VARCHAR(255) NOT NULL (lưu chuỗi mật khẩu)
-- vaiTro: VARCHAR(20) NOT NULL (lưu giá trị Enum: 'Bác sĩ', 'Bệnh nhân', 'QA')
+- vaiTro: VARCHAR(20) NOT NULL (lưu giá trị Enum: 'Bác sĩ', 'Bệnh nhân')
+- maBacSi VARCHAR(20) NULL (khóa ngoại tham chiếu bảng Doctors)
+- maBenhNhan: VARCHAR(20) NULL (khóa ngoại tham chiếu bảng Patients)
 
 # Bảng 2: Patients/Bệnh nhân (Hồ sơ bệnh nhân)
 Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
@@ -18,27 +20,22 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - gioiTinh: NVARCHAR(10) NOT NULL (giá trị: 'Nam', 'Nữ')
 - sdt: VARCHAR(15) cho phép NULL (lưu số đt dạng chuỗi)
 - diaChi: NVARCHAR(255) cho phép NULL (địa chỉ liên hệ)
-- doiTuongBHYT: VARCHAR(20) cho phép NULL (lưu mã thẻ BHYT)
 
 # Bảng 3: MedicalRecords/Ca khám bệnh (Timeline)
 Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - maCaKham VARCHAR(20) PRIMARY KEY (định danh ca khám)
 - maBenhNhan VARCHAR(20) NOT NULL (khóa ngoại tham chiếu bảng Patients)
 - maBacSi VARCHAR(20) NOT NULL (khóa ngoại tham chiếu bảng Doctors/Users)
-- maChuyenKhoa VARCHAR(20) NOT NULL (20) NOT NULL (khóa ngoại tham chiếu bảng Departments)
 - ngayKham DATETIME NOT NULL (lưu thời gian khám để vẽ Timeline)
+- chuyenKhoa NVARCHAR(100) NULL (Lưu text tên khoa lúc khám)
 - trieuChung NVARCHAR(2000) cho phép NULL (mô tả triệu chứng lâm sàng)
 - chanDoan NVARCHAR(1000) cho phép NULL (kết luận chẩn đoán)
 - ghiChuDonThuoc NVARCHAR(MAX) cho phép NULL (đơn thuốc được gộp thành chuỗi text)
 
-# Bảng 4: Departments (Danh mục chuyên khoa)
-Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
-- maChuyenKhoa VARCHAR(20) PRIMARY KEY
-- tenChuyenKhoa NVARCHAR(100) NOT NULL (tên chuyên khoa hiển thị trên Dropdown)
-
-# Bảng 5: Doctors (Danh mục Bác sĩ phụ trách)
+# Bảng 4: Doctors (Danh mục Bác sĩ phụ trách)
 - maBacSi VARCHAR(20) PRIMARY KEY
 - tenBacSi NVARCHAR(100) NOT NULL (tên bác sĩ hiển thị trên Dropdown)
+- chuyenKhoa NVARCHAR(100) NOT NULL (lưu tên chuyên khoa)
 
 =======================================
 # 4 màn hình UI cốt lõi (mô tả SUT):
@@ -49,11 +46,10 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - Input chính: 
     + tenDangNhap (Username/Email)
     + matKhau (Password)
-    + vaiTro (Bác sĩ/Bệnh nhân)
 
 - Output mong đợi:
-    + Thành công: đăng nhập thành công, lưu JWT Token/Session, chuyển hướng đến màn hình trang chủ tương ứng với VaiTro
-    + Thất bại: hộp thoại thông báo lỗi hiển thị rõ ràng ("Sai tài khoản hoặc mật khẩu", "Tài khoản bị khóa"...)
+    + Thành công: Hệ thống tự trích xuất vaiTro từ DB, lưu JWT Token/Session và chuyển hướng đến trang chủ tương ứng.
+    + Thất bại: Thông báo lỗi chữ đỏ "Sai tài khoản hoặc mật khẩu".
 
 - Điều kiện biên:
     + Bỏ trống Username/Password
@@ -62,9 +58,9 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 --------------------------
 # Màn hình 2: Tra cứu hồ sơ bệnh án qua CCCD
 
-- Mục đích: cho phép Bác sĩ/Bệnh nhân tra cứu hồ sơ bệnh án bằng số CCCD
+- Mục đích: cho phép Bác sĩ tra cứu hồ sơ bệnh án bằng số CCCD
 
-- Input chính: SoCCCD (Chuỗi 12 chữ số)
+- Input chính: soCCCD (Chuỗi 12 chữ số)
 
 - Output mong đợi: 
     + Thành công: hiển thị hồ sơ bệnh án bệnh nhân 
@@ -80,18 +76,18 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
     + Thất bại: thông báo "Không tìm thấy dữ liệu bệnh nhân với số CCCD này"
 
 - Điều kiện biên:
-    + Nhập SoCCCD không đủ 12 số hoặc vượt quá 12 số 
-    + Nhập SoCCCD chứa ký tự chữ cái hoặc ký tự đặc biệt
+    + Nhập soCCCD không đủ 12 số hoặc vượt quá 12 số 
+    + Nhập soCCCD chứa ký tự chữ cái hoặc ký tự đặc biệt
     + Tra cứu với số CCCD hợp lệ nhưng chưa từng khám tại hệ thống
     + Để trống ô tìm hiếm mà vẫn bấm nút Tra cứu (Tìm kiếm)
 
 ------------------------------
 # Màn hình 3: Timeline bệnh án
 
-- Mục đích: hiển thị toàn bộ lịch sử các ca khám bệnh của bệnh nhân theo trình tự thời gian
+- Mục đích: hiển thị lịch sử các ca khám bệnh của bệnh nhân theo trình tự thời gian giảm dần (mới nhất ở trên)
 
 - Input chính: 
-    + maBenhNhan (hoặc SoCCCD)
+    + maBenhNhan (Lấy ngầm từ URL hoặc sau khi tra cứu ở Màn hình 2)
 
 - Output mong đợi:
     + Danh sách các thẻ ca khám xếp theo thứ tự thời gian giảm dần (ca khám mới nhất nằm ở trên cùng)
@@ -106,8 +102,8 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 
         Bên dưới (danh sách các Card ca khám):
             + maCaKham
-            + trangThai (trạng thái ca khám)
             + ngayKham
+            + chuyenKhoa
 
             + tenBacSi
             + trieuChung (triệu chứng lâm sàng - lý do khám)
@@ -116,8 +112,6 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 
 - Điều kiện biên:
     + Bệnh nhân mới tạo hồ sơ, chưa có lịch sử ca khám nào (Hiển thị empty state: "Chưa có dữ liệu ca khám")
-    + Khoảng thời gian lọc không hợp lệ (TuNgay lớn hơn DenNgay)
-    + Lọc theo khoảng thời gian không có ca khám nào phát sinh
 
 --------------------------------
 # Màn hình 4: Thêm ca khám mới 
@@ -125,19 +119,7 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - Mục đích: Bác sĩ nhập thông tin khám bệnh, chẩn đoán.. và tạo ca khám mới cho bệnh nhân
 
 - Input chính:
-    Đầu trang (thông tin chung của bệnh nhân): 
-        + maBenhNhan
-        + soCCCD
-        + hoVaTen
-        + ngaySinh
-        + gioiTinh
-        + sdt
-
-    Bên dưới (danh sách các Card ca khám):
-        + trangThai (trạng thái ca khám)
-        + ngayKham
-
-        + tenBacSi 
+        + chuyenKhoa (nhập tên khoa/chọn từ dropdown list)
         + trieuChung (triệu chứng lâm sàng - lý do khám)
         + chanDoan (chẩn đoán)
         + ghiChuDonThuoc
@@ -145,11 +127,10 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - Output mong đợi: 
     + Thành công: thông báo "Tạo ca khám thành công", hệ thống tự động sinh Mã ca khám mới và cập nhật ngay lập tức vào màn hình Timeline bệnh án
 
-    + Thất bại: 
+    + Thất bại: thông báo chữ đỏ cảnh báo thiếu trường dữ liệu.
 
 - Điều kiện biên:
-    + Bỏ trống các trường bắt buộc (MaBenhNhan, SoCCCD, NgayKham...)
-    + Kê đơn thuốc với số lượng âm hoặc bằng 0
+    + Bỏ trống các trường bắt buộc (Chuyên khoa, Triệu chứng, Chẩn đoán...)
     + Nhập nội dung TrieuChung chữa văn bản quá dài (> 2000 ký tự)
     + Bấm nút "Lưu ca khám" 2 lần liên tiếp (Double-click) -> Hệ thống chỉ ghi nhận 1 ca khám duy nhất
 
@@ -210,15 +191,19 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - Request Body: không có
 - Response Body & HTTP Status Codes mong đợi:
     + 200 OK (trả về mảng lịch sử khám. Nếu chưa từng khám thì trả về mảng rỗng []):
+[
         {
-            "maCaKham": "CK9981",
-            "ngayKham": "2023-10-26T08:30:00Z",
-            "tenBacSi": "Nguyễn Văn A",
-            "trieuChung": "Đau đầu, sốt nhẹ",
-            "chanDoan": "Sốt siêu vi",
-            "ghiChuDonThuoc": "1. Paracetamol 500mg x 10 viên (Ngày 2 viên sáng tối)\n2. Oresol x 5 gói"
-        }
-    + 404 Not found (mã bệnh nhân không tồn tại trong hệ thống)
+        "maCaKham": "CK9981",
+        "ngayKham": "2023-10-26T08:30:00Z",
+        "chuyenKhoa": "Nội tổng hợp",
+        "tenBacSi": "Nguyễn Văn A",
+        "trieuChung": "Đau đầu, sốt nhẹ",
+        "chanDoan": "Sốt siêu vi",
+        "ghiChuDonThuoc": "1. Paracetamol 500mg x 10 viên (Ngày 2 viên sáng tối)\n2. Oresol x 5 gói"
+    	}
+
+]
+    + 404 Not found (Mã bệnh nhân không tồn tại trong hệ thống): { "message": "Không tìm thấy hồ sơ bệnh nhân" }
     + 401 Unauthorized (thiếu hoặc sai JWT Token)
 ----------------
 
@@ -226,20 +211,21 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 - Endpoint: /api/v1/records
 - Method: POST
 - Request Body:
-    {
-        "maBenhNhan": "BN00102",
-        "maBacSi": "BS001",
-        "trieuChung": "Ho có đờm, rát họng",
-        "chanDoan": "Viêm họng cấp",
-        "ghiChuDonThuoc": "Kháng sinh Augmentin 1g x 14 viên..."
-    }
+    	{
+    "maBenhNhan": "BN00102",
+    "maBacSi": "BS001",
+    "chuyenKhoa": "Nội tổng hợp",
+    "trieuChung": "Ho có đờm, rát họng",
+    "chanDoan": "Viêm họng cấp",
+    "ghiChuDonThuoc": "Kháng sinh Augmentin 1g x 14 viên..."
+	}
 - Response Body & HTTP Status Codes mong đợi:
-    + 201 Created (lưu thành công, trả về ID ca khám để tiện cho PyTesst assert):
+    + 201 Created (lưu thành công, trả về ID ca khám để tiện cho PyTest assert):
         {
             "maCaKham": "CK9982",
             "message": "Tạo ca khám thành công"
         }
-    + 400 Bad Request (bỏ trống các trường bắt buộc như maBenhNhan, trieuChung, chanDoan)
+    + 400 Bad Request (bỏ trống các trường bắt buộc như maBenhNhan, chuyenKhoa, trieuChung, chanDoan).
     + 403 Forbidden (User là bệnh nhân nhưng cố tình gọi API tạo ca khám của bác sĩ)
 -------------------
 
@@ -269,11 +255,19 @@ Thuộc tính || Kiểu dữ liệu SQL || Ràng buộc, ý nghĩa
 # API 6 (Lấy danh sách Bác sĩ (bổ trợ UI) - API dùng để fill dữ liệu bác sĩ phụ trách): 
 - Endpoint: /api/v1/doctors
 - Method: GET
-- Query Parameter (tùy chọn): ?departmentId=K01 (để lọc bác sĩ theo khoa nếu cần, không thì trả về hết)
+- Query Parameter (tùy chọn): ?chuyenKhoa={ten_khoa} (Dùng để lọc bác sĩ theo text tên khoa nếu cần. Nếu không truyền sẽ trả về toàn bộ danh sách).
 - Request Body: không có
 - Response Body & HTTP Status Codes mong đợi:
     + 200 OK:
         [
-            { "maBacSi": "BS001", "tenBacSi": "Nguyễn Văn A" },
-            { "maBacSi": "BS002", "tenBacSi": "Lê Thị C" }
-        ]
+    { 
+        "maBacSi": "BS001", 
+        "tenBacSi": "Nguyễn Văn A", 
+        "chuyenKhoa": "Nội tim mạch" 
+    },
+    { 
+        "maBacSi": "BS002", 
+        "tenBacSi": "Lê Thị C", 
+        "chuyenKhoa": "Ngoại khoa" 
+    }
+]

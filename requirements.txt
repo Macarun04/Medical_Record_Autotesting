@@ -1,0 +1,13 @@
+# Lõi kiểm thử tự động
+pytest==8.1.1
+playwright==1.42.0
+pytest-playwright==0.4.4
+
+# Tiện ích sinh dữ liệu giả (CCCD, Họ tên...)
+Faker==24.4.0
+
+# Xuất báo cáo kiểm thử trực quan
+allure-pytest==2.13.5
+
+# Thư viện gọi API (Dành cho 30 Test case API)
+requests==2.31.0
