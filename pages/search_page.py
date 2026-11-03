@@ -25,3 +25,21 @@ class SearchPage(BasePage):
         """Bấm nút chuyển sang màn hình Timeline sau khi tìm thấy"""
         self.btn_view_timeline.click()
         self.page.wait_for_load_state("networkidle")
+
+from playwright.sync_api import Page
+
+class SearchPage:
+    def __init__(self, page: Page):
+        self.page = page
+        self.search_input = page.locator("#searchInput")
+        self.patient_card = page.locator("#patientCard")
+        self.empty_state = page.locator("#emptyState")
+        self.error_message = page.locator("#errorMessage")
+        
+        # Các trường thông tin trên thẻ
+        self.val_hoten = page.locator("#valHoTen")
+        self.val_cccd = page.locator("#valCCCD")
+
+    def search_cccd(self, cccd):
+        self.search_input.fill(cccd)
+        self.search_input.press("Enter")
