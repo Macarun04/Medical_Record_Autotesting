@@ -5,26 +5,19 @@ class TimelinePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
         
-        # Locators
-        self.patient_header = page.get_by_test_id("timeline-patient-header")
-        self.record_cards = page.get_by_test_id("record-card") # Bắt toàn bộ các thẻ ca khám
-        self.empty_state = page.get_by_test_id("empty-state-message")
-        self.btn_add_new_record = page.get_by_test_id("btn-add-record")
-
-    def get_record_count(self) -> int:
-        """Đếm số lượng ca khám hiển thị trên Timeline"""
-        return self.record_cards.count()
-
-    def is_empty_state_visible(self) -> bool:
-        """Kiểm tra xem dòng chữ 'Chưa có dữ liệu ca khám' có hiển thị không"""
-        return self.empty_state.is_visible()
-
-    def get_first_record_diagnose(self) -> str:
-        """Lấy chẩn đoán của ca khám mới nhất (nằm trên cùng)"""
-        # first() để lấy phần tử đầu tiên trong mảng các card
-        first_card = self.record_cards.first
-        return first_card.get_by_test_id("text-chandoan").inner_text()
+        # 1. Các locator cho Banner thông tin bệnh nhân
+        self.banner_ma_bn = page.locator("#bannerMaBN")
         
-    def click_add_new_record(self):
-        """Bấm nút chuyển sang màn hình thêm ca khám"""
-        self.btn_add_new_record.click()
+        # 2. Các nút bấm hành động
+        self.btn_add_new_record = page.locator("#btnAddRecord")
+        self.btn_save_record = page.locator("button.btn-save")
+        
+        # 3. Vùng chứa danh sách và modal
+        self.timeline_container = page.locator("#timelineContainer")
+        self.record_modal = page.locator("#recordModal")
+        self.record_cards = page.locator(".record-card")
+        
+        # 4. Các trường input trong modal thêm ca khám
+        self.input_trieu_chung = page.locator("textarea#inputTrieuChung")
+        self.input_chan_doan = page.locator("textarea#inputChanDoan")
+        self.input_ghi_chu = page.locator("textarea#inputGhiChu")

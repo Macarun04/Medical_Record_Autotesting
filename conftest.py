@@ -45,18 +45,34 @@ def patient_headers():
 # ==========================================
 # 2. FIXTURES FAKER (Sinh dữ liệu ngẫu nhiên)
 # ==========================================
+import random
+
 @pytest.fixture
 def fake_patient_data():
-    """Tạo payload hồ sơ bệnh nhân ngẫu nhiên, chuẩn tiếng Việt và không bị trùng CCCD"""
+    """Tạo payload hồ sơ bệnh nhân ngẫu nhiên, tổ hợp động hàng nghìn kiểu không lặp"""
+    
+    ho = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đỗ", "Bùi", "Hồ", "Ngô", "Dương", "Lý"]
+    dem = ["Văn", "Thị", "Đình", "Hữu", "Minh", "Thu", "Thanh", "Hoàng", "Gia", "Bảo"]
+    ten = ["An", "Bình", "Cường", "Dung", "Đức", "Hoa", "Hùng", "Linh", "Quân", "Trang", "Hải", "Thảo", "Nam", "Nghĩa", "Phúc"]
+    
+    duong = ["Nguyễn Trãi", "Cầu Giấy", "Láng Hạ", "Giải Phóng", "Trần Duy Hưng", "Xã Đàn", "Phố Huế", "Đại Cồ Việt"]
+    phuong = ["Phường Mễ Trì", "Phường Thượng Đình", "Phường Dịch Vọng", "Phường Hàng Bột", "Phường Khương Mai"]
+    quan = ["Quận Nam Từ Liêm", "Quận Thanh Xuân", "Quận Cầu Giấy", "Quận Đống Đa", "Quận Ba Đình"]
+
+    # Ghép tổ hợp tên: Hàng chục x Hàng chục x Hàng chục = Hàng nghìn tên khác nhau
+    full_name = f"{random.choice(ho)} {random.choice(dem)} {random.choice(ten)}"
+    
+    # Ghép tổ hợp địa chỉ
+    full_address = f"Số {random.randint(1, 300)} đường {random.choice(duong)}, {random.choice(phuong)}, {random.choice(quan)}, Hà Nội"
+
     return {
-        "soCCCD": fake.unique.numerify(text="012#########"), # 12 số, bắt đầu bằng 012
-        "hoVaTen": fake.name(),
-        # Ép kiểu ngày sinh về đúng chuẩn ISO 8601 của C# DateTime
+        "soCCCD": fake.unique.numerify(text="012#########"), # 12 số không trùng nhau
+        "hoVaTen": full_name,
         "ngaySinh": fake.date_of_birth(minimum_age=1, maximum_age=90).strftime("%Y-%m-%dT00:00:00"),
         "gioiTinh": fake.random_element(elements=("Nam", "Nữ")),
-        "sdt": fake.numerify(text="09########"), # 10 số điện thoại VN
-        "diaChi": fake.address(),
-        "doiTuongBHYT": fake.bothify(text="DN###########") # Mã BHYT giả lập
+        "sdt": fake.numerify(text="09########"), 
+        "diaChi": full_address,
+        "doiTuongBHYT": fake.bothify(text="DN###########")
     }
 
 @pytest.fixture
@@ -104,3 +120,34 @@ def pytest_runtest_makereport(item, call):
                 name="URL_Tai_Thoi_Diem_Loi",
                 attachment_type=allure.attachment_type.TEXT
             )
+
+# FAKER SINH DỮ LIỆU BÁC SĨ NGẪU NHIÊN
+@pytest.fixture
+def fake_doctor_data():
+    """Tạo payload hồ sơ bác sĩ ngẫu nhiên, tổ hợp động từ các mảng từ vựng tiếng Việt chuyên nghiệp"""
+    
+    ho = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đỗ", "Bùi", "Hồ", "Ngô"]
+    dem = ["Văn", "Thị", "Đình", "Hữu", "Minh", "Thu", "Thanh", "Hoàng", "Gia", "Hồng"]
+    ten = ["An", "Bình", "Cường", "Dung", "Đức", "Hoa", "Hùng", "Linh", "Quân", "Trang", "Hải", "Thảo", "Nam", "Sơn", "Tùng"]
+    
+    chuyen_khoa = [
+        "Nội khoa", 
+        "Ngoại khoa", 
+        "Nhi khoa", 
+        "Sản phụ khoa", 
+        "Da liễu", 
+        "Tai Mũi Họng", 
+        "Mắt", 
+        "Tim mạch",
+        "Thần kinh",
+        "Chấn thương chỉnh hình"
+    ]
+
+    # Ghép tổ hợp tên bác sĩ: Họ + Đệm + Tên
+    full_name = f"{random.choice(ho)} {random.choice(dem)} {random.choice(ten)}"
+
+    return {
+        "maBacSi": f"BS_{random.randint(1000, 9999)}", # Mã bác sĩ ngẫu nhiên tránh trùng lặp
+        "tenBacSi": full_name,
+        "chuyenKhoa": random.choice(chuyen_khoa)
+    }
