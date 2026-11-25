@@ -12,6 +12,7 @@ class TestSearchAPI:
     @allure.story("Tra cứu CCCD")
     @allure.title("TC_API2_01: Tra cứu CCCD hợp lệ có trong DB")
     @pytest.mark.api
+    @pytest.mark.smoke
     @pytest.mark.happy_path
     def test_api2_01_search_valid_cccd(self, doctor_headers):
         with allure.step("Bước 1: Gửi request GET tra cứu CCCD hợp lệ (012345678912)"):

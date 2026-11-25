@@ -1,0 +1,1 @@
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Sdt":["The Sdt field is required."],"DiaChi":["The DiaChi field is required."]},"traceId":"00-9d841537d0d488ff318fa1cf9f66801b-662239c10ea1548c-00"}

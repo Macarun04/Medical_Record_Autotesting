@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ci-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "StrongPassword123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./sut/init-db.sql:/init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'StrongPassword123!' -C -Q 'SELECT 1' || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  backend:
+    build:
+      context: ./sut/DATN_TestSUT
+      dockerfile: Dockerfile
+    container_name: ci-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Docker"
+      ASPNETCORE_URLS: "http://+:7053"
+      ConnectionStrings__DefaultConnection: "Server=db;Database=MedicalRecordSystem;User Id=sa;Password=StrongPassword123!;TrustServerCertificate=True;"
+    ports:
+      - "7053:7053"
+
+  frontend:
+    image: nginx:alpine
+    container_name: ci-frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./sut/SUT_FrontEnd:/tmp/frontend:ro
+    ports:
+      - "5500:80"
+    command: >
+      /bin/sh -c "cp -r /tmp/frontend/* /usr/share/nginx/html/ &&
+      sed -i 's|https://localhost:7053|http://localhost:7053|g' /usr/share/nginx/html/*.js /usr/share/nginx/html/*.html 2>/dev/null || true;
+      nginx -g 'daemon off;'"

@@ -2,25 +2,34 @@ venv/
 env/
 .venv/
 
-pycache/
+__pycache__/
 *.py[cod]
 *$py.class
 
 .env
 auth/auth_state.json
+doctor_state.json
+patient_state.json
 
 .pytest_cache/
 allure-results/
 allure-report/
+artifacts/
+.coverage
+coverage.xml
 
 test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
 
+# Thư mục build của Backend C# (.NET)
+**/bin/
+**/obj/
+*.user
+*.suo
+
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
-__pycache__/
-doctor_state.json

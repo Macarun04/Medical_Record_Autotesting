@@ -76,7 +76,7 @@ class TestAddDoctorAPI:
             assert response.status_code == 400, "Phải trả về 400 Bad Request khi thiếu trường bắt buộc"
 
     @allure.story("Bảo mật & Phân quyền Bác sĩ")
-    @allure.title("TC_API7_04: Phân quyền sai vai trò (Dùng Token Bác sĩ thường)")
+    @allure.title("TC_API7_04: Phân quyền sai vai trò")
     @pytest.mark.api
     @pytest.mark.error_path
     @pytest.mark.security
@@ -86,7 +86,7 @@ class TestAddDoctorAPI:
             "tenBacSi": "Lỗi phân quyền",
             "chuyenKhoa": "Nhi khoa"
         }
-        with allure.step("Bước 1: Gửi request POST với Token của Bác sĩ thường (Không phải Admin)"):
+        with allure.step("Bước 1: Gửi request POST với Token của Bác sĩ (Không phải Admin)"):
             response = requests.post(BASE_URL, json=payload, headers=HEADERS_DOCTOR, verify=False)
         
         with allure.step(f"Bước 2: Kiểm tra Status Code phải bị chặn lỗi 403 Forbidden (Nhận được: {response.status_code})"):

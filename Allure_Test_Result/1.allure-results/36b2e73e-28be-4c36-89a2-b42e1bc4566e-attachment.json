@@ -1,0 +1,1 @@
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"cccd":["The cccd field is required."]},"traceId":"00-24211f693f0b00d77f8bd8fe3887200e-bf21b9fddf6a0d61-00"}

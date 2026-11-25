@@ -1,0 +1,1 @@
+tenDangNhap=BS_NguyenVanA&matKhau=123

@@ -59,13 +59,12 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
 if (!app.Environment.IsEnvironment("Docker"))
 {
     app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
+
 
 // 1. PHẢI BẬT CORS ĐẦU TIÊN (Trước Authentication và Authorization)
 app.UseCors("AllowAll");

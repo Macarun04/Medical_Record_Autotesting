@@ -174,6 +174,9 @@ def pytest_runtest_makereport(item, call):
 
         if page:
             screenshot_bytes = page.screenshot(full_page=True)
+            os.makedirs("artifacts/screenshots", exist_ok=True)
+            with open(f"artifacts/screenshots/{item.name}.png", "wb") as f:
+                f.write(screenshot_bytes)
             allure.attach(
                 screenshot_bytes,
                 name=f"Screenshot_Loi_UI_{item.name}",
