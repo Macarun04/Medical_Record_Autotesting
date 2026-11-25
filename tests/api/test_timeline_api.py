@@ -36,7 +36,7 @@ class TestTimelineAPI:
     @pytest.mark.happy_path
     @pytest.mark.boundary
     def test_api3_02_timeline_empty(self, doctor_headers):
-        ma_benh_nhan = "BN_03"
+        ma_benh_nhan = "BN_02"
         
         with allure.step(f"Bước 1: Gửi request GET lấy timeline của bệnh nhân chưa khám {ma_benh_nhan}"):
             response = requests.get(f"{BASE_URL}/{ma_benh_nhan}/record", headers=doctor_headers, verify=False)

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu hồ sơ - Hệ thống Quản lý Bệnh án</title>
+    <style>
+        /* Reset cơ bản */
+        - { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; }
+
+        /* Thanh Header ngang */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .header-left h1 { font-size: 20px; margin-right: 20px; }
+        
+        /* Ô tìm kiếm trên Header */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 20px;
+            padding: 5px 15px;
+            width: 400px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+        
+        .header-right { font-weight: bold; }
+
+        /* Vùng nội dung chính (Thân trang) */
+        .main-content { padding: 40px; display: flex; justify-content: center; }
+
+        /* Trạng thái rỗng (Chưa tìm kiếm) */
+        #emptyState {
+            text-align: center;
+            color: #7f8c8d;
+            margin-top: 50px;
+        }
+
+        /* Card thông tin bệnh nhân (Ngang) */
+        #patientCard {
+            display: none; /* Ẩn lúc ban đầu */
+            background: white;
+            width: 800px;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #3498db;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #2980b9;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item span.label { font-weight: bold; color: #7f8c8d; display: inline-block; width: 120px; }
+        .info-item span.value { color: #2c3e50; font-weight: 500; }
+
+        /* Nút Xem Timeline ở góc dưới phải */
+        .btn-timeline {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-timeline:hover { background-color: #2ecc71; }
+        
+        .error-message { color: #e74c3c; text-align: center; margin-top: 20px; display: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- Thanh Header -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Hệ thống Y tế</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Nhập số CCCD bệnh nhân và nhấn Enter...">
+            </div>
+        </div>
+        <!-- <div class="header-right">
+            <span id="welcomeText">Xin chào Bác sĩ...</span>
+        </div> -->
+    </div>
+
+    <!-- Thân trang -->
+    <div class="main-content">
+        <!-- 1. Trạng thái rỗng -->
+        <div id="emptyState">
+            <h2>Chưa có dữ liệu hiển thị</h2>
+            <p>Vui lòng nhập số CCCD (12 số) vào ô tìm kiếm phía trên để tra cứu hồ sơ bệnh nhân.</p>
+        </div>
+
+        <!-- 2. Báo lỗi -->
+        <div id="errorMessage" class="error-message"></div>
+
+        <!-- 3. Card kết quả ngang -->
+        <div id="patientCard">
+            <div class="card-title">Kết quả tra cứu hồ sơ bệnh nhân</div>
+            <div class="info-grid">
+                <div class="info-item"><span class="label">Mã bệnh nhân:</span> <span class="value" id="valMaBN">---</span></div>
+                <div class="info-item"><span class="label">Số CCCD:</span> <span class="value" id="valCCCD">---</span></div>
+                <div class="info-item"><span class="label">Họ và tên:</span> <span class="value" id="valHoTen">---</span></div>
+                <div class="info-item"><span class="label">Ngày sinh:</span> <span class="value" id="valNgaySinh">---</span></div>
+                <div class="info-item"><span class="label">Giới tính:</span> <span class="value" id="valGioiTinh">---</span></div>
+                <div class="info-item"><span class="label">Số điện thoại:</span> <span class="value" id="valSDT">---</span></div>
+                <div class="info-item"><span class="label">Địa chỉ:</span> <span class="value" id="valDiaChi">---</span></div>
+            </div>
+            <button class="btn-timeline" id="btnGoTimeline">Xem Timeline Bệnh Án</button>
+        </div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const vaiTro = localStorage.getItem('vaiTro');
+
+        if (!token || vaiTro !== 'Bác sĩ') {
+            alert('Bạn không có quyền truy cập trang này. Vui lòng đăng nhập với tài khoản Bác sĩ!');
+            window.location.href = 'login.html';
+        }
+
+        let currentMaBenhNhan = ""; 
+        const searchInput = document.getElementById('searchInput');
+
+        // Hàm gọi API tìm kiếm bệnh nhân theo CCCD dùng chung
+        async function searchPatient(cccd) {
+            if (!cccd) return;
+
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('patientCard').style.display = 'none';
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(`http://localhost:7053/api/v1/patients/search?cccd=${cccd}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Đổ dữ liệu lên Card
+                    document.getElementById('valMaBN').innerText = data.maBenhNhan || '---';
+                    document.getElementById('valCCCD').innerText = data.soCCCD || '---';
+                    document.getElementById('valHoTen').innerText = data.hoVaTen || '---';
+                    document.getElementById('valNgaySinh').innerText = data.ngaySinh ? data.ngaySinh.split('T')[0] : '---';
+                    document.getElementById('valGioiTinh').innerText = data.gioiTinh || '---';
+                    document.getElementById('valSDT').innerText = data.sdt || '---';
+                    document.getElementById('valDiaChi').innerText = data.diaChi || '---';
+
+                    currentMaBenhNhan = data.maBenhNhan;
+
+                    // Hiển thị Card thông tin
+                    document.getElementById('patientCard').style.display = 'block';
+                } else if (response.status === 404) {
+                    errorDiv.innerText = "Không tìm thấy hồ sơ bệnh nhân với số CCCD này!";
+                    errorDiv.style.display = 'block';
+                    document.getElementById('emptyState').style.display = 'block';
+                } else {
+                    errorDiv.innerText = "Số CCCD không hợp lệ hoặc lỗi hệ thống.";
+                    errorDiv.style.display = 'block';
+                    document.getElementById('emptyState').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Lỗi:', error);
+                errorDiv.innerText = "Lỗi kết nối đến máy chủ!";
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        // 1. Tự động kiểm tra nếu trên URL có truyền sẵn cccd (khi bấm nút quay lại từ timeline)
+        window.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cccdParam = urlParams.get('cccd');
+            if (cccdParam) {
+                searchInput.value = cccdParam;
+                await searchPatient(cccdParam);
+            }
+        });
+
+        // 2. Bắt sự kiện nhấn Enter ở ô tìm kiếm thủ công
+        searchInput.addEventListener('keypress', async function(e) {
+            if (e.key === 'Enter') {
+                const cccd = searchInput.value.trim();
+                await searchPatient(cccd);
+            }
+        });
+
+        // 3. Sự kiện click nút "Xem Timeline Bệnh Án"
+        document.getElementById('btnGoTimeline').addEventListener('click', function() {
+            if (currentMaBenhNhan) {
+                window.location.href = `timeline.html?maBenhNhan=${currentMaBenhNhan}`;
+            }
+        });
+    </script>
+</body>
+</html>

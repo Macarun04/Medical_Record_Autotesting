@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Hệ thống Quản lý Hồ sơ Bệnh án</title>
+    <style>
+        /* CSS thiết kế giao diện */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Thay link ảnh dưới đây bằng ảnh nền bệnh viện/y tế mà bạn thích */
+            background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 { color: #2c3e50; margin-bottom: 20px; }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Đảm bảo input không bị tràn viền */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover { background-color: #2980b9; }
+
+        #errorMessage {
+            color: #e74c3c;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Đăng Nhập Hệ Thống</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" placeholder="Nhập tên đăng nhập..." required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" placeholder="Nhập mật khẩu..." required>
+            </div>
+            <button type="submit">Đăng nhập</button>
+            <div id="errorMessage"></div>
+        </form>
+    </div>
+
+    <script>
+        // Lắng nghe sự kiện Submit Form
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Chặn việc tự động reload trang
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('errorMessage');
+            
+            // Xóa thông báo lỗi cũ
+            errorDiv.style.display = 'none';
+            errorDiv.innerText = '';
+
+            try {
+                // GỌI API BACKEND C#
+                // LƯU Ý: Thay đổi cổng 7053 thành cổng Swagger thực tế của bạn
+                const response = await fetch('http://localhost:7053/api/v1/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        tenDangNhap: username,
+                        matKhau: password
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Lưu Token vào LocalStorage để dùng cho các API sau
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('vaiTro', data.vaiTro);
+                    
+                    alert('Đăng nhập thành công với vai trò: ' + data.vaiTro);
+
+                    localStorage.setItem('maBacSi', data.maBacSi || data.maBenhNhan);
+                    
+                    // Điều hướng (Sẽ tạo các trang này sau)
+                    if (data.vaiTro === 'Bệnh nhân') {
+                    // Nếu là bệnh nhân: Lưu mã bệnh nhân và chuyển thẳng đến trang timeline của họ
+                        if (data.maBenhNhan) {
+                            localStorage.setItem('maBenhNhan', data.maBenhNhan);
+                            window.location.href = `timeline.html?maBenhNhan=${data.maBenhNhan}`;
+                        } else {
+                            alert('Tài khoản bệnh nhân thiếu mã định danh!');
+                        }
+                    } else if (data.vaiTro === 'Bác sĩ') {
+                        // Nếu là bác sĩ: Chuyển đến trang tra cứu (search.html) để tìm bệnh nhân
+                        window.location.href = 'search.html';
+                    } else {
+                        // Mặc định hoặc phân quyền khác
+                        window.location.href = 'search.html';
+                    }
+                } else {
+                    const errorData = await response.json();
+                    errorDiv.innerText = errorData.message || 'Sai tài khoản hoặc mật khẩu';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Lỗi kết nối:', error);
+                errorDiv.innerText = 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại Backend.';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>

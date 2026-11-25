@@ -22,3 +22,5 @@ playwright/.cache/
 .idea/
 .DS_Store
 Thumbs.db
+__pycache__/
+doctor_state.json

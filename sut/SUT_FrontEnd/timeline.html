@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Bệnh Án - Hệ thống Quản lý Bệnh án</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; }
+
+        /* Header */
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: #2c3e50; color: white; padding: 15px 30px;
+        }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .btn-back { background-color: #7f8c8d; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        .btn-back:hover { background-color: #95a5a6; }
+        
+        /* Nút thêm ca khám */
+        #btnAddRecord {
+            background-color: #e67e22; color: white; border: none; padding: 10px 20px;
+            border-radius: 5px; font-weight: bold; cursor: pointer; display: none;
+        }
+        #btnAddRecord:hover { background-color: #d35400; }
+
+        /* Container chính */
+        .container { max-width: 800px; margin: 30px auto; }
+        
+        /* Patient Banner */
+        .patient-banner { background: white; padding: 15px 25px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #2980b9; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .patient-banner h2 { color: #2980b9; margin-bottom: 5px; }
+
+        /* Timeline Cards */
+        .timeline-container { display: flex; flex-direction: column; gap: 15px; }
+        .record-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
+        .record-date { position: absolute; top: 20px; right: 20px; font-weight: bold; color: #27ae60; background: #e8f8f5; padding: 5px 10px; border-radius: 15px; font-size: 14px; }
+        .record-field { margin-bottom: 8px; line-height: 1.5; }
+        .record-field span.label { font-weight: bold; color: #7f8c8d; }
+        .empty-timeline { text-align: center; color: #7f8c8d; padding: 40px; background: white; border-radius: 8px; }
+
+        /* Modal thêm ca khám */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: white; width: 500px; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-content h3 { margin-bottom: 20px; color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+        .btn-cancel { background: #95a5a6; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+        .btn-save { background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-left">
+            <button class="btn-back" onclick="goBack()">🔙 Quay lại</button>
+            <h1>Timeline bệnh án (lịch sử khám bệnh)</h1>
+        </div>
+        <button id="btnAddRecord">➕ Thêm ca khám mới</button>
+    </div>
+
+    <div class="container">
+        <!-- Banner thông tin bệnh nhân -->
+        <div class="patient-banner">
+            <h2 id="bannerHoVaTen">Đang tải...</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; font-size: 14px; color: #555;">
+                <p><strong>Mã Bệnh nhân:</strong> <span id="bannerMaBN">---</span></p>
+                <p><strong>Số CCCD:</strong> <span id="bannerCCCD">---</span></p>
+                <p><strong>Ngày sinh:</strong> <span id="bannerNgaySinh">---</span></p>
+                <p><strong>Giới tính:</strong> <span id="bannerGioiTinh">---</span></p>
+                <p><strong>Số điện thoại:</strong> <span id="bannerSdt">---</span></p>
+                <p><strong>Địa chỉ:</strong> <span id="bannerDiaChi">---</span></p>
+            </div>
+        </div>
+    
+        <!-- Vùng chứa các Card Timeline -->
+        <div id="timelineContainer" class="timeline-container">
+            <!-- Render bằng JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal Thêm Ca Khám -->
+    <div id="recordModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Thêm Ca Khám Mới</h3>
+            <form id="addRecordForm">
+                <div class="form-group">
+                    <label>Triệu chứng (*)</label>
+                    <textarea id="inputTrieuChung" rows="2" required placeholder="Mô tả triệu chứng..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Chẩn đoán (*)</label>
+                    <textarea id="inputChanDoan" rows="2" required placeholder="Kết luận bệnh..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú / Đơn thuốc</label>
+                    <textarea id="inputGhiChu" rows="3" placeholder="Đơn thuốc hoặc lời dặn..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Hủy</button>
+                    <button type="submit" class="btn-save">Lưu ca khám</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const vaiTro = localStorage.getItem('vaiTro');
+        const maBacSiDangNhap = localStorage.getItem('maBacSi');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const maBenhNhan = urlParams.get('maBenhNhan');
+
+        if (!token || !maBenhNhan) {
+            alert('Lỗi truy cập. Vui lòng đăng nhập lại!');
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('bannerMaBN').innerText = maBenhNhan;
+
+        if (vaiTro === 'Bác sĩ') {
+            document.getElementById('btnAddRecord').style.display = 'block';
+        }
+
+        function goBack() {
+            // Lấy số CCCD đang hiển thị trên banner của bệnh nhân hiện tại
+            const cccd = document.getElementById('bannerCCCD').innerText;
+            if (cccd && cccd !== '---') {
+                window.location.href = `search.html?cccd=${cccd}`;
+            } else {
+                window.location.href = 'search.html';
+            }
+        }
+
+        async function fetchTimeline() {
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = '<i>Đang tải dữ liệu...</i>';
+
+            try {
+                const response = await fetch(`http://localhost:7053/api/v1/patients/${maBenhNhan}/record`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    
+                    const p = result.patient || {};
+                    document.getElementById('bannerHoVaTen').innerText = p.hoVaTen || '---';
+                    document.getElementById('bannerMaBN').innerText = p.maBenhNhan || maBenhNhan;
+                    document.getElementById('bannerCCCD').innerText = p.soCCCD || '---';
+                    
+                    const ngaySinhFormatted = p.ngaySinh ? p.ngaySinh.split('T')[0] : '---';
+                    document.getElementById('bannerNgaySinh').innerText = ngaySinhFormatted;
+                    
+                    document.getElementById('bannerGioiTinh').innerText = p.gioiTinh || '---';
+                    document.getElementById('bannerSdt').innerText = p.sdt || 'Chưa cập nhật';
+                    document.getElementById('bannerDiaChi').innerText = p.diaChi || 'Chưa cập nhật';
+
+                    container.innerHTML = ''; 
+
+                    const records = result.records || [];
+                    if (records.length === 0) {
+                        container.innerHTML = '<div class="empty-timeline">Bệnh nhân chưa có lịch sử khám bệnh nào.</div>';
+                        return;
+                    }
+
+                    records.forEach(record => {
+                        const dateFormatted = record.ngayKham ? record.ngayKham.replace('T', ' ').substring(0, 16) : '---';
+                        
+                        const card = document.createElement('div');
+                        card.className = 'record-card';
+                        card.innerHTML = `
+                            <div class="record-date">${dateFormatted}</div>
+                            <div class="record-field"><span class="label">Mã ca khám:</span> ${record.maCaKham}</div>
+                            <div class="record-field"><span class="label">Bác sĩ phụ trách:</span> ${record.maBacSi}</div>
+                            <div class="record-field"><span class="label">Chuyên khoa:</span> ${record.chuyenKhoa}</div>
+                            <div class="record-field"><span class="label">Triệu chứng:</span> ${record.trieuChung}</div>
+                            <div class="record-field"><span class="label">Chẩn đoán:</span> <strong>${record.chanDoan}</strong></div>
+                            <div class="record-field" style="white-space: pre-line;"><span class="label">Ghi chú / Đơn thuốc:</span> <br> ${record.ghiChuDonThuoc || 'Không có'}</div>
+                        `;
+                        container.appendChild(card);
+                    });
+                } else {
+                    container.innerHTML = '<div class="empty-timeline" style="color:red;">Không thể tải dữ liệu bệnh nhân.</div>';
+                }
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = '<div class="empty-timeline" style="color:red;">Lỗi kết nối đến Backend!</div>';
+            }
+        }
+
+        fetchTimeline();
+
+        const modal = document.getElementById('recordModal');
+
+        document.getElementById('btnAddRecord').addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.getElementById('addRecordForm').reset();
+        }
+
+        document.getElementById('addRecordForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const payload = {
+                maBenhNhan: maBenhNhan,
+                maBacSi: maBacSiDangNhap || 'BS_01',
+                trieuChung: document.getElementById('inputTrieuChung').value.trim(),
+                chanDoan: document.getElementById('inputChanDoan').value.trim(),
+                ghiChuDonThuoc: document.getElementById('inputGhiChu').value.trim()
+            };
+
+            try {
+                const response = await fetch('http://localhost:7053/api/v1/records', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}` 
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.status === 201) {
+                    alert('Thêm ca khám thành công!');
+                    closeModal();
+                    fetchTimeline(); 
+                } else {
+                    const errData = await response.json();
+                    alert('Lỗi: ' + (errData.message || 'Không thể tạo ca khám'));
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Lỗi kết nối đến máy chủ!');
+            }
+        });
+    </script>
+</body>
+</html>
