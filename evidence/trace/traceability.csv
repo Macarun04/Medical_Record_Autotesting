@@ -1,0 +1,22 @@
+Module	REQ_ID	System_Requirement	API_Test_Cases	UI_Test_Cases	Total_Mapped_Tests	Status
+1. Xác th?c & Phân quy?n (Auth)	REQ_01	"??ng nh?p thành công, c?p phát Token và chuy?n h??ng ?úng vai trò (Bác s?/B?nh nhân)"	"TC_API1_01, TC_API1_02"	"TC_UI_01, TC_UI_02"	4	Covered
+1. Xác th?c & Phân quy?n (Auth)	REQ_02	"B?t l?i ??ng nh?p: sai thông tin, b? tr?ng form, sai ??nh d?ng payload"	"TC_API1_03, TC_API1_04, TC_API1_05"	"TC_UI_03, TC_UI_04"	5	Covered
+1. Xác th?c & Phân quy?n (Auth)	REQ_03	Phân quy?n truy c?p API và UI (B?nh nhân không ???c xem danh sách ho?c t?o ca khám; Block truy c?p không có Token)	"TC_API3_04, TC_API4_05, TC_API6_05"	TC_UI_10	4	Covered
+2. Qu?n lý B?nh nhân (Patient)	REQ_04	T?o h? s? b?nh nhân thành công v?i d? li?u h?p l? (t? ??ng sinh mã)	TC_API5_01		1	Covered
+2. Qu?n lý B?nh nhân (Patient)	REQ_05	Ki?m soát trùng l?p khóa chính (S? CCCD ?ã t?n t?i)	TC_API5_02		1	Covered
+2. Qu?n lý B?nh nhân (Patient)	REQ_06	Ràng bu?c d? li?u b?t bu?c (NOT NULL) và validate ??nh d?ng DateTime	"TC_API5_03, TC_API5_04, TC_API5_05"		3	Covered
+3. Qu?n lý Bác s? (Doctor)	REQ_07	L?y danh sách bác s? toàn vi?n	TC_API6_01		1	Covered
+3. Qu?n lý Bác s? (Doctor)	REQ_08	"L?c danh sách bác s? theo chuyên khoa (có data, r?ng, và x? lý URL Encoding)"	"TC_API6_02, TC_API6_03, TC_API6_04"		3	Covered
+4. Tra c?u B?nh nhân (Search)	REQ_09	Tra c?u thành công h? s? theo CCCD h?p l? và hi?n th? giao di?n th? thông tin	TC_API2_01	TC_UI_05	2	Covered
+4. Tra c?u B?nh nhân (Search)	REQ_10	Tr? mã l?i 404 và hi?n th? thông báo rõ ràng trên giao di?n khi tra c?u CCCD không t?n t?i	TC_API2_02	TC_UI_06	2	Covered
+4. Tra c?u B?nh nhân (Search)	REQ_11	"B?t l?i validation CCCD (sai ?? dài, ch?a ký t? ??c bi?t, b? tr?ng tham s?)"	"TC_API2_03, TC_API2_04, TC_API2_05"		3	Covered
+5. Qu?n lý L?ch s? (Timeline)	REQ_12	Hi?n th? ?úng danh sách các ca khám theo dòng th?i gian c?a b?nh nhân c? th?	"TC_API3_01, TC_API3_02"	"TC_UI_07, TC_UI_10"	4	Covered
+5. Qu?n lý L?ch s? (Timeline)	REQ_13	X? lý l?i khi truy c?p timeline c?a b?nh nhân không t?n t?i	TC_API3_03		1	Covered
+5. Qu?n lý L?ch s? (Timeline)	REQ_14	Ng?n ch?n t?n công Injection (SQLi) thông qua param mã b?nh nhân trên URL	TC_API3_05		1	Covered
+6. T?o Ca Khám (Record)	REQ_15	L?u ca khám m?i thành công (c? tr??ng h?p ??y ?? và thi?u tr??ng tùy ch?n)	"TC_API4_01, TC_API4_02"	TC_UI_09	3	Covered
+6. T?o Ca Khám (Record)	REQ_16	"Ki?m soát tính toàn v?n d? li?u: B? tr?ng tr??ng b?t bu?c, v??t gi?i h?n ký t? (Max Length 2000)"	"TC_API4_03, TC_API4_04"	TC_UI_08	3	Covered
+7. T?o h? s? Bác S?	REQ_17	T?o h? s? bác s? m?i thành công v?i thông tin h?p l? (quy?n Admin)	TC_API7_01		1	Covered
+7. T?o h? s? Bác S?	REQ_18	Ch?n trùng l?p mã Bác s? và b?t l?i thi?u thông tin b?t bu?c	"TC_API7_02, TC_API7_03"		2	Covered
+7. T?o h? s? Bác S?	REQ_19	Ki?m soát xác th?c và phân quy?n API t?o bác s? (ch?n truy c?p không có Token và ch?n Bác s? t?o h? s?(ch? Admin))	"TC_API7_04, TC_API7_05"		2	Covered
+8. L?y danh sách B?nh nhân	REQ_20	"L?y danh sách b?nh nhân toàn vi?n, l?c d? li?u r?ng và ki?m th? biên v?i tham s? phân trang"	"TC_API8_01, TC_API8_02, TC_API8_03"		3	Covered
+8. L?y danh sách B?nh nhân	REQ_21	Ki?m soát xác th?c và phân quy?n truy c?p API danh sách b?nh nhân (ch?n truy c?p không có Token và ch?n B?nh nhân xem danh sách toàn vi?n)	"TC_API8_04, TC_API8_05"		2	Covered
