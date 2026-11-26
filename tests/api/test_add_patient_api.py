@@ -51,7 +51,7 @@ class TestAddPatientAPI:
     @pytest.mark.api
     @pytest.mark.boundary
     def test_api5_03_create_patient_missing_req(self, fake_patient_data):
-        with allure.step("Bước 1: Lấy data ngẫu nhiên, cố tình xóa đi 2 trường bắt buộc (hoVaTen, ngaySinh)"):
+        with allure.step("Bước 1: Lấy data ngẫu nhiên, cố tình xóa đi 2 trường bắt buộc (hoVaTen, ngaySinh - thiếu nhóm thông tin định danh)"):
             del fake_patient_data["hoVaTen"]
             del fake_patient_data["ngaySinh"]
             allure.attach(json.dumps(fake_patient_data, ensure_ascii=False, indent=2), name="Request Payload", attachment_type=allure.attachment_type.JSON)
@@ -68,7 +68,7 @@ class TestAddPatientAPI:
     @pytest.mark.api
     @pytest.mark.error_path
     def test_api5_04_create_patient_min_data(self, fake_patient_data):
-        with allure.step("Bước 1: Lấy data ngẫu nhiên, cố tình xóa SĐT, Địa chỉ và BHYT"):
+        with allure.step("Bước 1: Lấy data ngẫu nhiên, cố tình xóa SĐT, Địa chỉ và BHYT (thiếu nhóm thông tin liên hệ)"):
             del fake_patient_data["sdt"]
             del fake_patient_data["diaChi"]
             del fake_patient_data["doiTuongBHYT"]
