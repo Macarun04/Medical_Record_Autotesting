@@ -4,7 +4,7 @@ Module	REQ_ID	System_Requirement	API_Test_Cases	UI_Test_Cases	Total_Mapped_Tests
 1. Xác th?c & Phân quy?n (Auth)	REQ_03	Phân quy?n truy c?p API và UI (B?nh nhân không ???c xem danh sách ho?c t?o ca khám; Block truy c?p không có Token)	"TC_API3_04, TC_API4_05, TC_API6_05"	TC_UI_10	4	Covered
 2. Qu?n lý B?nh nhân (Patient)	REQ_04	T?o h? s? b?nh nhân thành công v?i d? li?u h?p l? (t? ??ng sinh mã)	TC_API5_01		1	Covered
 2. Qu?n lý B?nh nhân (Patient)	REQ_05	Ki?m soát trùng l?p khóa chính (S? CCCD ?ã t?n t?i)	TC_API5_02		1	Covered
-2. Qu?n lý B?nh nhân (Patient)	REQ_06	Ràng bu?c d? li?u b?t bu?c (NOT NULL) và validate ??nh d?ng DateTime	"TC_API5_03, TC_API5_04, TC_API5_05"		3	Covered
+2. Qu?n lý B?nh nhân (Patient)	REQ_06	Ràng bu?c d? li?u b?t bu?c (NOT NULL: nhóm ??nh danh và nhóm liên h?) và validate ??nh d?ng DateTime	"TC_API5_03, TC_API5_04, TC_API5_05"		3	Covered
 3. Qu?n lý Bác s? (Doctor)	REQ_07	L?y danh sách bác s? toàn vi?n	TC_API6_01		1	Covered
 3. Qu?n lý Bác s? (Doctor)	REQ_08	"L?c danh sách bác s? theo chuyên khoa (có data, r?ng, và x? lý URL Encoding)"	"TC_API6_02, TC_API6_03, TC_API6_04"		3	Covered
 4. Tra c?u B?nh nhân (Search)	REQ_09	Tra c?u thành công h? s? theo CCCD h?p l? và hi?n th? giao di?n th? thông tin	TC_API2_01	TC_UI_05	2	Covered
