@@ -78,9 +78,10 @@ jobs:
         if: always()
         run: |
           mkdir -p artifacts
-          docker exec ci-backend /tools/dotnet-coverage shutdown sut-cov || true
-          docker wait ci-backend || true
-          docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml || true
+          docker stop -t 30 ci-backend
+          docker logs ci-backend
+          docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml
+          ls -lh artifacts/coverage.xml
 
       - name: Capture Docker container logs on failure
         if: failure()

@@ -28,12 +28,6 @@ services:
       ASPNETCORE_URLS: "http://+:7053"
       ConnectionStrings__DefaultConnection: "Server=db;Database=MedicalRecordSystem;User Id=sa;Password=StrongPassword123!;TrustServerCertificate=True;"
       ENABLE_COVERAGE: "${ENABLE_COVERAGE:-false}"
-    entrypoint: >
-      /bin/sh -c "if [ \"$$ENABLE_COVERAGE\" = \"true\" ]; then
-        exec /tools/dotnet-coverage collect --session-id sut-cov -f cobertura -o /coverage/coverage.xml dotnet DATN_TestSUT.dll;
-      else
-        exec dotnet DATN_TestSUT.dll;
-      fi"
     ports:
       - "7053:7053"
 

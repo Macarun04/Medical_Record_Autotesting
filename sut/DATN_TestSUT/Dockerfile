@@ -13,7 +13,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 COPY --from=build /root/.dotnet/tools /tools
-RUN mkdir -p /coverage
+RUN mkdir -p /coverage && \
+    printf '#!/bin/sh\nset -e\nif [ "$ENABLE_COVERAGE" = "true" ]; then\n  echo "Starting SUT with dotnet-coverage..."\n  exec /tools/dotnet-coverage collect -f cobertura -o /coverage/coverage.xml dotnet DATN_TestSUT.dll\nelse\n  echo "Starting SUT normally..."\n  exec dotnet DATN_TestSUT.dll\nfi\n' > /entrypoint.sh && \
+    chmod +x /entrypoint.sh
 
 EXPOSE 7053
-ENTRYPOINT ["dotnet", "DATN_TestSUT.dll"]
+ENTRYPOINT ["/entrypoint.sh"]
