@@ -1,0 +1,1053 @@
+﻿2026-11-26T03:18:09.2005272Z Current runner version: '2.338.2'
+2026-11-26T03:18:09.2037627Z ##[group]Runner Image Provisioner
+2026-11-26T03:18:09.2038988Z Hosted Compute Agent
+2026-11-26T03:18:09.2039754Z Version: 20261111.635
+2026-11-26T03:18:09.2040668Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+2026-11-26T03:18:09.2041633Z Build Date: 2026-11-11T01:49:01Z
+2026-11-26T03:18:09.2042564Z Worker ID: {fa72dd22-1813-4c0e-9bae-7d71afda6faa}
+2026-11-26T03:18:09.2043607Z Region: eastus3
+2026-11-26T03:18:09.2044340Z Cloud: Azure
+2026-11-26T03:18:09.2045134Z ##[endgroup]
+2026-11-26T03:18:09.2046904Z ##[group]Operating System
+2026-11-26T03:18:09.2047771Z Ubuntu
+2026-11-26T03:18:09.2049280Z 26.04.1
+2026-11-26T03:18:09.2049980Z LTS
+2026-11-26T03:18:09.2050606Z ##[endgroup]
+2026-11-26T03:18:09.2051275Z ##[group]Runner Image
+2026-11-26T03:18:09.2051891Z Image: ubuntu-26.04
+2026-11-26T03:18:09.2052445Z Version: 20261116.202.1
+2026-11-26T03:18:09.2053661Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-26T03:18:09.2055104Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+2026-11-26T03:18:09.2056040Z ##[endgroup]
+2026-11-26T03:18:09.2057198Z ##[group]GITHUB_TOKEN Permissions
+2026-11-26T03:18:09.2059922Z Contents: read
+2026-11-26T03:18:09.2060549Z Metadata: read
+2026-11-26T03:18:09.2061103Z Packages: read
+2026-11-26T03:18:09.2061639Z ##[endgroup]
+2026-11-26T03:18:09.2063646Z Secret source: Actions
+2026-11-26T03:18:09.2064574Z Cache mode: write
+2026-11-26T03:18:09.2065650Z Prepare workflow directory
+2026-11-26T03:18:09.2470698Z Prepare all required actions
+2026-11-26T03:18:09.2540394Z Getting action download info
+2026-11-26T03:18:09.4811325Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-26T03:18:09.5694395Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-26T03:18:09.6595636Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-26T03:18:09.8655900Z Complete job name: test
+2026-11-26T03:18:09.9434657Z ##[group]Run actions/checkout@v4
+2026-11-26T03:18:09.9435463Z with:
+2026-11-26T03:18:09.9436012Z   repository: Macarun04/Medical_Record_Autotesting
+2026-11-26T03:18:09.9440185Z   token: ***
+2026-11-26T03:18:09.9440736Z   ssh-strict: true
+2026-11-26T03:18:09.9441255Z   ssh-user: git
+2026-11-26T03:18:09.9441763Z   persist-credentials: true
+2026-11-26T03:18:09.9442294Z   clean: true
+2026-11-26T03:18:09.9442808Z   sparse-checkout-cone-mode: true
+2026-11-26T03:18:09.9443409Z   fetch-depth: 1
+2026-11-26T03:18:09.9443938Z   fetch-tags: false
+2026-11-26T03:18:09.9444446Z   show-progress: true
+2026-11-26T03:18:09.9444945Z   lfs: false
+2026-11-26T03:18:09.9445425Z   submodules: false
+2026-11-26T03:18:09.9445948Z   set-safe-directory: true
+2026-11-26T03:18:09.9446488Z   allow-unsafe-pr-checkout: false
+2026-11-26T03:18:09.9447302Z ##[endgroup]
+2026-11-26T03:18:10.1925640Z Syncing repository: Macarun04/Medical_Record_Autotesting
+2026-11-26T03:18:10.1929008Z ##[group]Getting Git version info
+2026-11-26T03:18:10.1930664Z Working directory is '/home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting'
+2026-11-26T03:18:10.1932610Z [command]/usr/bin/git version
+2026-11-26T03:18:10.1933486Z git version 2.56.1
+2026-11-26T03:18:10.1948834Z ##[endgroup]
+2026-11-26T03:18:10.1962807Z Temporarily overriding HOME='/home/runner/work/_temp/03a02b46-43aa-4106-9b7b-32f5901861e2' before making global git config changes
+2026-11-26T03:18:10.1965398Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-26T03:18:10.1967461Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting
+2026-11-26T03:18:10.2050673Z Deleting the contents of '/home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting'
+2026-11-26T03:18:10.2070476Z ##[group]Initializing the repository
+2026-11-26T03:18:10.2080323Z [command]/usr/bin/git init /home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting
+2026-11-26T03:18:10.2169693Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-26T03:18:10.2171680Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-26T03:18:10.2200087Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-26T03:18:10.2201507Z hint: call:
+2026-11-26T03:18:10.2202165Z hint:
+2026-11-26T03:18:10.2202982Z hint: 	git config --global init.defaultBranch <name>
+2026-11-26T03:18:10.2203975Z hint:
+2026-11-26T03:18:10.2204838Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-26T03:18:10.2206631Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-26T03:18:10.2207754Z hint:
+2026-11-26T03:18:10.2208563Z hint: 	git branch -m <name>
+2026-11-26T03:18:10.2209347Z hint:
+2026-11-26T03:18:10.2210314Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-26T03:18:10.2212219Z Initialized empty Git repository in /home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting/.git/
+2026-11-26T03:18:10.2215117Z [command]/usr/bin/git remote add origin https://github.com/Macarun04/Medical_Record_Autotesting
+2026-11-26T03:18:10.2262175Z ##[endgroup]
+2026-11-26T03:18:10.2263630Z ##[group]Disabling automatic garbage collection
+2026-11-26T03:18:10.2266428Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-26T03:18:10.2307380Z ##[endgroup]
+2026-11-26T03:18:10.2308979Z ##[group]Setting up auth
+2026-11-26T03:18:10.2316319Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-26T03:18:10.2360604Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-26T03:18:10.2880185Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-26T03:18:10.2915126Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-26T03:18:10.3140619Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-26T03:18:10.3171179Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-26T03:18:10.3389284Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-26T03:18:10.3433989Z ##[endgroup]
+2026-11-26T03:18:10.3436071Z ##[group]Fetching the repository
+2026-11-26T03:18:10.3444644Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8de8138cd1bbdac7942b1104f461c569a21e7099:refs/remotes/origin/main
+2026-11-26T03:18:10.7137770Z From https://github.com/Macarun04/Medical_Record_Autotesting
+2026-11-26T03:18:10.7139879Z  * [new ref]         8de8138cd1bbdac7942b1104f461c569a21e7099 -> origin/main
+2026-11-26T03:18:10.7150149Z ##[endgroup]
+2026-11-26T03:18:10.7151967Z ##[group]Determining the checkout info
+2026-11-26T03:18:10.7153496Z ##[endgroup]
+2026-11-26T03:18:10.7154264Z [command]/usr/bin/git sparse-checkout disable
+2026-11-26T03:18:10.7210014Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-26T03:18:10.7254089Z ##[group]Checking out the ref
+2026-11-26T03:18:10.7257335Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-26T03:18:10.7445004Z Switched to a new branch 'main'
+2026-11-26T03:18:10.7447723Z branch 'main' set up to track 'origin/main'.
+2026-11-26T03:18:10.7461018Z ##[endgroup]
+2026-11-26T03:18:10.7498694Z [command]/usr/bin/git log -1 --format=%H
+2026-11-26T03:18:10.7519545Z 8de8138cd1bbdac7942b1104f461c569a21e7099
+2026-11-26T03:18:10.7911395Z ##[group]Run actions/setup-python@v5
+2026-11-26T03:18:10.7912720Z with:
+2026-11-26T03:18:10.7913660Z   python-version: 3.12
+2026-11-26T03:18:10.7914732Z   check-latest: false
+2026-11-26T03:18:10.7924874Z   token: ***
+2026-11-26T03:18:10.7925938Z   update-environment: true
+2026-11-26T03:18:10.7927116Z   allow-prereleases: false
+2026-11-26T03:18:10.7928333Z   freethreaded: false
+2026-11-26T03:18:10.7929363Z ##[endgroup]
+2026-11-26T03:18:10.9273431Z ##[group]Installed versions
+2026-11-26T03:18:10.9414396Z (node:2414) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-26T03:18:10.9418508Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-26T03:18:10.9420990Z Successfully set up CPython (3.12.16)
+2026-11-26T03:18:10.9424060Z ##[endgroup]
+2026-11-26T03:18:10.9573407Z ##[group]Run python -m pip install --upgrade pip
+2026-11-26T03:18:10.9575173Z [36;1mpython -m pip install --upgrade pip[0m
+2026-11-26T03:18:10.9577141Z [36;1mif [ -f requirements.txt ]; then pip install -r requirements.txt; fi[0m
+2026-11-26T03:18:10.9579655Z [36;1mpip install pytest requests faker playwright allure-pytest pytest-cov[0m
+2026-11-26T03:18:10.9581533Z [36;1mplaywright install --with-deps chromium[0m
+2026-11-26T03:18:10.9627117Z shell: /usr/bin/bash -e {0}
+2026-11-26T03:18:10.9628589Z env:
+2026-11-26T03:18:10.9629883Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:10.9631948Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:18:10.9634061Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:10.9635878Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:10.9637569Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:10.9639629Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:18:10.9641674Z ##[endgroup]
+2026-11-26T03:18:11.5822069Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (26.3)
+2026-11-26T03:18:12.1036663Z Collecting pytest==8.1.1 (from -r requirements.txt (line 2))
+2026-11-26T03:18:12.1545284Z   Downloading pytest-8.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-11-26T03:18:12.1879279Z Collecting playwright==1.49.0 (from -r requirements.txt (line 3))
+2026-11-26T03:18:12.1979736Z   Downloading playwright-1.49.0-py3-none-manylinux1_x86_64.whl.metadata (3.5 kB)
+2026-11-26T03:18:12.2109564Z Collecting pytest-playwright==0.6.0 (from -r requirements.txt (line 4))
+2026-11-26T03:18:12.2351753Z   Downloading pytest_playwright-0.6.0.tar.gz (16 kB)
+2026-11-26T03:18:12.2461236Z   Installing build dependencies: started
+2026-11-26T03:18:12.8985588Z   Installing build dependencies: finished with status 'done'
+2026-11-26T03:18:12.8991588Z   Getting requirements to build wheel: started
+2026-11-26T03:18:13.5128364Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-26T03:18:13.5135135Z   Preparing metadata (pyproject.toml): started
+2026-11-26T03:18:13.7337842Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-26T03:18:13.7874258Z Collecting Faker==24.4.0 (from -r requirements.txt (line 7))
+2026-11-26T03:18:13.7938336Z   Downloading Faker-24.4.0-py3-none-any.whl.metadata (15 kB)
+2026-11-26T03:18:13.8216432Z Collecting allure-pytest==2.13.5 (from -r requirements.txt (line 10))
+2026-11-26T03:18:13.8286790Z   Downloading allure_pytest-2.13.5-py3-none-any.whl.metadata (2.8 kB)
+2026-11-26T03:18:13.8458497Z Collecting requests==2.31.0 (from -r requirements.txt (line 13))
+2026-11-26T03:18:13.8491498Z   Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+2026-11-26T03:18:13.8602890Z Collecting iniconfig (from pytest==8.1.1->-r requirements.txt (line 2))
+2026-11-26T03:18:13.8632788Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-11-26T03:18:13.8732228Z Collecting packaging (from pytest==8.1.1->-r requirements.txt (line 2))
+2026-11-26T03:18:13.8743425Z   Using cached packaging-26.4-py3-none-any.whl.metadata (3.5 kB)
+2026-11-26T03:18:13.8835829Z Collecting pluggy<2.0,>=1.4 (from pytest==8.1.1->-r requirements.txt (line 2))
+2026-11-26T03:18:13.8866436Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+2026-11-26T03:18:13.9999682Z Collecting greenlet==3.1.1 (from playwright==1.49.0->-r requirements.txt (line 3))
+2026-11-26T03:18:14.0042087Z   Downloading greenlet-3.1.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+2026-11-26T03:18:14.0191712Z Collecting pyee==12.0.0 (from playwright==1.49.0->-r requirements.txt (line 3))
+2026-11-26T03:18:14.0234843Z   Downloading pyee-12.0.0-py3-none-any.whl.metadata (2.8 kB)
+2026-11-26T03:18:14.0371540Z Collecting pytest-base-url<3.0.0,>=1.0.0 (from pytest-playwright==0.6.0->-r requirements.txt (line 4))
+2026-11-26T03:18:14.0418646Z   Downloading pytest_base_url-2.1.0-py3-none-any.whl.metadata (6.6 kB)
+2026-11-26T03:18:14.0546655Z Collecting python-slugify<9.0.0,>=6.0.0 (from pytest-playwright==0.6.0->-r requirements.txt (line 4))
+2026-11-26T03:18:14.0584058Z   Downloading python_slugify-8.0.4-py2.py3-none-any.whl.metadata (8.5 kB)
+2026-11-26T03:18:14.0711106Z Collecting python-dateutil>=2.4 (from Faker==24.4.0->-r requirements.txt (line 7))
+2026-11-26T03:18:14.0759070Z   Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+2026-11-26T03:18:14.0958647Z Collecting allure-python-commons==2.13.5 (from allure-pytest==2.13.5->-r requirements.txt (line 10))
+2026-11-26T03:18:14.1008112Z   Downloading allure_python_commons-2.13.5-py3-none-any.whl.metadata (5.5 kB)
+2026-11-26T03:18:14.2077198Z Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 13))
+2026-11-26T03:18:14.2134315Z   Downloading charset_normalizer-3.5.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (43 kB)
+2026-11-26T03:18:14.2288933Z Collecting idna<4,>=2.5 (from requests==2.31.0->-r requirements.txt (line 13))
+2026-11-26T03:18:14.2318783Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-11-26T03:18:14.2495959Z Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 13))
+2026-11-26T03:18:14.2528489Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+2026-11-26T03:18:14.2690407Z Collecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 13))
+2026-11-26T03:18:14.2718613Z   Downloading certifi-2026.11.20-py3-none-any.whl.metadata (2.5 kB)
+2026-11-26T03:18:14.2844537Z Collecting attrs>=16.0.0 (from allure-python-commons==2.13.5->allure-pytest==2.13.5->-r requirements.txt (line 10))
+2026-11-26T03:18:14.2891276Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-11-26T03:18:14.3046385Z Collecting typing-extensions (from pyee==12.0.0->playwright==1.49.0->-r requirements.txt (line 3))
+2026-11-26T03:18:14.3083676Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-11-26T03:18:14.3206433Z Collecting text-unidecode>=1.3 (from python-slugify<9.0.0,>=6.0.0->pytest-playwright==0.6.0->-r requirements.txt (line 4))
+2026-11-26T03:18:14.3382192Z   Downloading text_unidecode-1.3-py2.py3-none-any.whl.metadata (2.4 kB)
+2026-11-26T03:18:14.3527442Z Collecting tzdata (from python-dateutil>=2.4->Faker==24.4.0->-r requirements.txt (line 7))
+2026-11-26T03:18:14.3574636Z   Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-11-26T03:18:14.3671362Z Downloading pytest-8.1.1-py3-none-any.whl (337 kB)
+2026-11-26T03:18:14.3754666Z Downloading playwright-1.49.0-py3-none-manylinux1_x86_64.whl (44.1 MB)
+2026-11-26T03:18:14.9119605Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.1/44.1 MB 82.7 MB/s  0:00:00
+2026-11-26T03:18:14.9285955Z Downloading Faker-24.4.0-py3-none-any.whl (1.8 MB)
+2026-11-26T03:18:14.9462722Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 99.2 MB/s  0:00:00
+2026-11-26T03:18:14.9506155Z Downloading allure_pytest-2.13.5-py3-none-any.whl (11 kB)
+2026-11-26T03:18:14.9575443Z Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+2026-11-26T03:18:14.9666659Z Downloading allure_python_commons-2.13.5-py3-none-any.whl (15 kB)
+2026-11-26T03:18:14.9791603Z Downloading greenlet-3.1.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (613 kB)
+2026-11-26T03:18:14.9870488Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 613.1/613.1 kB 85.1 MB/s  0:00:00
+2026-11-26T03:18:14.9900574Z Downloading pyee-12.0.0-py3-none-any.whl (14 kB)
+2026-11-26T03:18:14.9950974Z Downloading charset_normalizer-3.5.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (257 kB)
+2026-11-26T03:18:15.0003759Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+2026-11-26T03:18:15.0055434Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-11-26T03:18:15.0111725Z Downloading pytest_base_url-2.1.0-py3-none-any.whl (5.3 kB)
+2026-11-26T03:18:15.0158904Z Downloading python_slugify-8.0.4-py2.py3-none-any.whl (10 kB)
+2026-11-26T03:18:15.0207022Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-11-26T03:18:15.0261937Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-11-26T03:18:15.0331797Z Downloading certifi-2026.11.20-py3-none-any.whl (127 kB)
+2026-11-26T03:18:15.0410385Z Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+2026-11-26T03:18:15.0465350Z Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
+2026-11-26T03:18:15.0518749Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-11-26T03:18:15.0548811Z Using cached packaging-26.4-py3-none-any.whl (140 kB)
+2026-11-26T03:18:15.0581719Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-11-26T03:18:15.0640741Z Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+2026-11-26T03:18:15.1527964Z Building wheels for collected packages: pytest-playwright
+2026-11-26T03:18:15.1532956Z   Building wheel for pytest-playwright (pyproject.toml): started
+2026-11-26T03:18:15.3900063Z   Building wheel for pytest-playwright (pyproject.toml): finished with status 'done'
+2026-11-26T03:18:15.3904657Z   Created wheel for pytest-playwright: filename=pytest_playwright-0.6.0-py3-none-any.whl size=16436 sha256=7066ad3531c8318ac9fb592227c3813af4fa827328d18e1724cff69ea2a35510
+2026-11-26T03:18:15.3907100Z   Stored in directory: /home/runner/.cache/pip/wheels/68/9e/d6/9983f5e35511f139a584d74366324cf5215c4bcafa5b1a88ea
+2026-11-26T03:18:15.3938314Z Successfully built pytest-playwright
+2026-11-26T03:18:15.4416945Z Installing collected packages: text-unidecode, urllib3, tzdata, typing-extensions, python-slugify, pluggy, packaging, iniconfig, idna, greenlet, charset-normalizer, certifi, attrs, requests, python-dateutil, pytest, pyee, allure-python-commons, pytest-base-url, playwright, Faker, allure-pytest, pytest-playwright
+2026-11-26T03:18:17.8741035Z 
+2026-11-26T03:18:17.8765442Z Successfully installed Faker-24.4.0 allure-pytest-2.13.5 allure-python-commons-2.13.5 attrs-26.1.0 certifi-2026.11.20 charset-normalizer-3.5.3 greenlet-3.1.1 idna-3.20 iniconfig-2.3.1 packaging-26.4 playwright-1.49.0 pluggy-1.7.0 pyee-12.0.0 pytest-8.1.1 pytest-base-url-2.1.0 pytest-playwright-0.6.0 python-dateutil-4.0.0 python-slugify-8.0.4 requests-2.31.0 text-unidecode-1.3 typing-extensions-4.16.0 tzdata-2026.6 urllib3-2.8.0
+2026-11-26T03:18:18.2573257Z Requirement already satisfied: pytest in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (8.1.1)
+2026-11-26T03:18:18.2577303Z Requirement already satisfied: requests in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (2.31.0)
+2026-11-26T03:18:18.2581480Z Requirement already satisfied: faker in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (24.4.0)
+2026-11-26T03:18:18.2585789Z Requirement already satisfied: playwright in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (1.49.0)
+2026-11-26T03:18:18.2590126Z Requirement already satisfied: allure-pytest in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (2.13.5)
+2026-11-26T03:18:18.2930782Z Collecting pytest-cov
+2026-11-26T03:18:18.3279833Z   Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+2026-11-26T03:18:18.3369804Z Requirement already satisfied: iniconfig in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from pytest) (2.3.1)
+2026-11-26T03:18:18.3373116Z Requirement already satisfied: packaging in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from pytest) (26.4)
+2026-11-26T03:18:18.3378048Z Requirement already satisfied: pluggy<2.0,>=1.4 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from pytest) (1.7.0)
+2026-11-26T03:18:18.3396713Z Requirement already satisfied: charset-normalizer<4,>=2 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from requests) (3.5.3)
+2026-11-26T03:18:18.3401536Z Requirement already satisfied: idna<4,>=2.5 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from requests) (3.20)
+2026-11-26T03:18:18.3406372Z Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from requests) (2.8.0)
+2026-11-26T03:18:18.3411290Z Requirement already satisfied: certifi>=2017.4.17 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from requests) (2026.11.20)
+2026-11-26T03:18:18.3448765Z Requirement already satisfied: python-dateutil>=2.4 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from faker) (4.0.0)
+2026-11-26T03:18:18.3458701Z Requirement already satisfied: greenlet==3.1.1 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from playwright) (3.1.1)
+2026-11-26T03:18:18.3462977Z Requirement already satisfied: pyee==12.0.0 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from playwright) (12.0.0)
+2026-11-26T03:18:18.3476824Z Requirement already satisfied: typing-extensions in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from pyee==12.0.0->playwright) (4.16.0)
+2026-11-26T03:18:18.3495049Z Requirement already satisfied: allure-python-commons==2.13.5 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from allure-pytest) (2.13.5)
+2026-11-26T03:18:18.3504283Z Requirement already satisfied: attrs>=16.0.0 in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from allure-python-commons==2.13.5->allure-pytest) (26.1.0)
+2026-11-26T03:18:18.7041613Z Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov)
+2026-11-26T03:18:18.7078043Z   Downloading coverage-7.17.5-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.3 kB)
+2026-11-26T03:18:18.7147452Z Requirement already satisfied: tzdata in /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages (from python-dateutil>=2.4->faker) (2026.6)
+2026-11-26T03:18:18.7239375Z Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+2026-11-26T03:18:18.7305282Z Downloading coverage-7.17.5-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (265 kB)
+2026-11-26T03:18:18.7726935Z Installing collected packages: coverage, pytest-cov
+2026-11-26T03:18:18.8843028Z 
+2026-11-26T03:18:18.8862932Z Successfully installed coverage-7.17.5 pytest-cov-7.1.0
+2026-11-26T03:18:19.1752462Z Installing dependencies...
+2026-11-26T03:18:19.1819224Z Switching to root user to install dependencies...
+2026-11-26T03:18:19.2530579Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-26T03:18:19.2866060Z Get:6 https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease [3964 B]
+2026-11-26T03:18:19.3112143Z Get:7 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main amd64 Packages [192 kB]
+2026-11-26T03:18:19.3129745Z Hit:2 http://azure.archive.ubuntu.com/ubuntu resolute InRelease
+2026-11-26T03:18:19.3289447Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+2026-11-26T03:18:19.3299363Z Get:8 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main arm64 Packages [178 kB]
+2026-11-26T03:18:19.3697041Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+2026-11-26T03:18:19.3819296Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+2026-11-26T03:18:19.3961926Z Get:9 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 Packages [918 kB]
+2026-11-26T03:18:19.4294297Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [202 kB]
+2026-11-26T03:18:19.4414835Z Get:11 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64v3 Packages [398 kB]
+2026-11-26T03:18:19.4544618Z Get:12 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [126 kB]
+2026-11-26T03:18:19.4675528Z Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-updates/restricted amd64v3 Packages [640 kB]
+2026-11-26T03:18:19.4814035Z Get:14 http://azure.archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [132 kB]
+2026-11-26T03:18:19.4932925Z Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-security/main amd64v3 Packages [754 kB]
+2026-11-26T03:18:19.5084344Z Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-security/main Translation-en [163 kB]
+2026-11-26T03:18:19.5203024Z Get:17 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe amd64v3 Packages [224 kB]
+2026-11-26T03:18:19.5325173Z Get:18 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe Translation-en [73.3 kB]
+2026-11-26T03:18:19.5975929Z Get:19 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted amd64v3 Packages [618 kB]
+2026-11-26T03:18:19.6115647Z Get:20 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted Translation-en [128 kB]
+2026-11-26T03:18:21.6035156Z Fetched 5162 kB in 1s (10.1 MB/s)
+2026-11-26T03:18:22.3217650Z Reading package lists...
+2026-11-26T03:18:22.3483487Z Reading package lists...
+2026-11-26T03:18:22.5065504Z Building dependency tree...
+2026-11-26T03:18:22.5072172Z Reading state information...
+2026-11-26T03:18:22.5440987Z libasound2t64 is already the newest version (1.2.15.3-1ubuntu1.1).
+2026-11-26T03:18:22.5442040Z libasound2t64 set to manually installed.
+2026-11-26T03:18:22.5442947Z libatk-bridge2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+2026-11-26T03:18:22.5443636Z libatk-bridge2.0-0t64 set to manually installed.
+2026-11-26T03:18:22.5444327Z libatk1.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+2026-11-26T03:18:22.5444944Z libatk1.0-0t64 set to manually installed.
+2026-11-26T03:18:22.5445555Z libatspi2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+2026-11-26T03:18:22.5446189Z libatspi2.0-0t64 set to manually installed.
+2026-11-26T03:18:22.5446752Z libcairo2 is already the newest version (1.18.4-3).
+2026-11-26T03:18:22.5447284Z libcairo2 set to manually installed.
+2026-11-26T03:18:22.5447698Z libcups2t64 is already the newest version (2.4.16-1ubuntu1.3).
+2026-11-26T03:18:22.5448126Z libcups2t64 set to manually installed.
+2026-11-26T03:18:22.5448805Z libdbus-1-3 is already the newest version (1.16.2-2ubuntu4).
+2026-11-26T03:18:22.5449218Z libdbus-1-3 set to manually installed.
+2026-11-26T03:18:22.5449634Z libdrm2 is already the newest version (2.4.131-1).
+2026-11-26T03:18:22.5450031Z libdrm2 set to manually installed.
+2026-11-26T03:18:22.5450404Z libgbm1 is already the newest version (26.0.8-1ubuntu0.3).
+2026-11-26T03:18:22.5450865Z libgbm1 set to manually installed.
+2026-11-26T03:18:22.5451266Z libglib2.0-0t64 is already the newest version (2.88.0-1ubuntu0.1).
+2026-11-26T03:18:22.5451733Z libglib2.0-0t64 set to manually installed.
+2026-11-26T03:18:22.5452142Z libnspr4 is already the newest version (2:4.38.2-1ubuntu1).
+2026-11-26T03:18:22.5452532Z libnspr4 set to manually installed.
+2026-11-26T03:18:22.5452951Z libnss3 is already the newest version (2:3.120-1ubuntu2.2).
+2026-11-26T03:18:22.5453341Z libnss3 set to manually installed.
+2026-11-26T03:18:22.5453721Z libpango-1.0-0 is already the newest version (1.57.0-1).
+2026-11-26T03:18:22.5454170Z libpango-1.0-0 set to manually installed.
+2026-11-26T03:18:22.5454598Z libx11-6 is already the newest version (2:1.8.13-1ubuntu0.1).
+2026-11-26T03:18:22.5455033Z libx11-6 set to manually installed.
+2026-11-26T03:18:22.5455752Z libxcb1 is already the newest version (1.17.0-2ubuntu1).
+2026-11-26T03:18:22.5456172Z libxcb1 set to manually installed.
+2026-11-26T03:18:22.5456581Z libxcomposite1 is already the newest version (1:0.4.6-1build1).
+2026-11-26T03:18:22.5457008Z libxcomposite1 set to manually installed.
+2026-11-26T03:18:22.5457415Z libxdamage1 is already the newest version (1:1.1.7-1).
+2026-11-26T03:18:22.5457805Z libxdamage1 set to manually installed.
+2026-11-26T03:18:22.5458544Z libxext6 is already the newest version (2:1.3.4-1build3).
+2026-11-26T03:18:22.5458966Z libxext6 set to manually installed.
+2026-11-26T03:18:22.5459356Z libxfixes3 is already the newest version (1:6.0.0-2build2).
+2026-11-26T03:18:22.5459776Z libxfixes3 set to manually installed.
+2026-11-26T03:18:22.5460277Z libxkbcommon0 is already the newest version (1.13.1-1).
+2026-11-26T03:18:22.5460684Z libxkbcommon0 set to manually installed.
+2026-11-26T03:18:22.5461126Z libxrandr2 is already the newest version (2:1.5.4-1build1).
+2026-11-26T03:18:22.5461531Z libxrandr2 set to manually installed.
+2026-11-26T03:18:22.5461984Z xvfb is already the newest version (2:21.1.22-1ubuntu1.3).
+2026-11-26T03:18:22.5462480Z fonts-noto-color-emoji is already the newest version (2.051-1build1).
+2026-11-26T03:18:22.5462959Z libfontconfig1 is already the newest version (2.17.1-3ubuntu1).
+2026-11-26T03:18:22.5463412Z libfontconfig1 set to manually installed.
+2026-11-26T03:18:22.5463837Z libfreetype6 is already the newest version (2.14.2+dfsg-1ubuntu0.2).
+2026-11-26T03:18:22.5464272Z libfreetype6 set to manually installed.
+2026-11-26T03:18:22.5464704Z fonts-liberation is already the newest version (1:2.1.5-3build1).
+2026-11-26T03:18:22.5465162Z fonts-liberation set to manually installed.
+2026-11-26T03:18:22.5939106Z Solving dependencies...
+2026-11-26T03:18:22.6917271Z The following additional packages will be installed:
+2026-11-26T03:18:22.6918165Z   xfonts-encodings xfonts-utils
+2026-11-26T03:18:22.6922315Z Recommended packages:
+2026-11-26T03:18:22.6922779Z   fonts-ipafont-mincho fonts-tlwg-loma
+2026-11-26T03:18:22.7100885Z The following NEW packages will be installed:
+2026-11-26T03:18:22.7101661Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-11-26T03:18:22.7108555Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-11-26T03:18:22.7109057Z   xfonts-utils
+2026-11-26T03:18:22.7300015Z 0 upgraded, 9 newly installed, 0 to remove and 69 not upgraded.
+2026-11-26T03:18:22.7300827Z Need to get 21.9 MB of archives.
+2026-11-26T03:18:22.7301805Z After this operation, 80.2 MB of additional disk space will be used.
+2026-11-26T03:18:22.7302612Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-26T03:18:22.7782657Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-ipafont-gothic all 00303-23ubuntu1 [3703 kB]
+2026-11-26T03:18:22.8867138Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 fonts-freefont-ttf all 20211204+svn4273-4build1 [5656 kB]
+2026-11-26T03:18:23.0721157Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-tlwg-loma-otf all 1:0.7.3-1build1 [106 kB]
+2026-11-26T03:18:23.0864241Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-unifont all 1:16.0.04-1build1 [3169 kB]
+2026-11-26T03:18:23.2190406Z Get:6 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-wqy-zenhei all 0.9.45-8build1 [7863 kB]
+2026-11-26T03:18:23.4979249Z Get:7 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-encodings all 1:1.0.5-0ubuntu3 [576 kB]
+2026-11-26T03:18:23.5192909Z Get:8 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-utils amd64 1:7.7+7build1 [97.3 kB]
+2026-11-26T03:18:23.5322009Z Get:9 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-cyrillic all 1:1.0.5+nmu1build1 [384 kB]
+2026-11-26T03:18:23.5503597Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-scalable all 1:1.0.3-1.3build1 [304 kB]
+2026-11-26T03:18:23.8651896Z Fetched 21.9 MB in 1s (26.1 MB/s)
+2026-11-26T03:18:23.8877943Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-11-26T03:18:23.9071595Z (Reading database ... 
+2026-11-26T03:18:23.9072289Z (Reading database ... 5%
+2026-11-26T03:18:23.9072802Z (Reading database ... 10%
+2026-11-26T03:18:23.9073310Z (Reading database ... 15%
+2026-11-26T03:18:23.9073821Z (Reading database ... 20%
+2026-11-26T03:18:23.9074291Z (Reading database ... 25%
+2026-11-26T03:18:23.9074657Z (Reading database ... 30%
+2026-11-26T03:18:23.9075048Z (Reading database ... 35%
+2026-11-26T03:18:23.9075446Z (Reading database ... 40%
+2026-11-26T03:18:23.9075807Z (Reading database ... 45%
+2026-11-26T03:18:23.9076269Z (Reading database ... 50%
+2026-11-26T03:18:23.9312038Z (Reading database ... 55%
+2026-11-26T03:18:23.9623545Z (Reading database ... 60%
+2026-11-26T03:18:23.9905276Z (Reading database ... 65%
+2026-11-26T03:18:24.0200208Z (Reading database ... 70%
+2026-11-26T03:18:24.0611464Z (Reading database ... 75%
+2026-11-26T03:18:24.1725803Z (Reading database ... 80%
+2026-11-26T03:18:24.3754047Z (Reading database ... 85%
+2026-11-26T03:18:24.5656457Z (Reading database ... 90%
+2026-11-26T03:18:24.7635696Z (Reading database ... 95%
+2026-11-26T03:18:24.7637102Z (Reading database ... 100%
+2026-11-26T03:18:24.7638161Z (Reading database ... 214296 files and directories currently installed.)
+2026-11-26T03:18:24.7683067Z Preparing to unpack .../0-fonts-ipafont-gothic_00303-23ubuntu1_all.deb ...
+2026-11-26T03:18:24.7769298Z Unpacking fonts-ipafont-gothic (00303-23ubuntu1) ...
+2026-11-26T03:18:24.8833301Z Selecting previously unselected package fonts-freefont-ttf.
+2026-11-26T03:18:24.8960065Z Preparing to unpack .../1-fonts-freefont-ttf_20211204+svn4273-4build1_all.deb ...
+2026-11-26T03:18:24.8973314Z Unpacking fonts-freefont-ttf (20211204+svn4273-4build1) ...
+2026-11-26T03:18:25.0012439Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-11-26T03:18:25.0138138Z Preparing to unpack .../2-fonts-tlwg-loma-otf_1%3a0.7.3-1build1_all.deb ...
+2026-11-26T03:18:25.0150007Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+2026-11-26T03:18:25.0337973Z Selecting previously unselected package fonts-unifont.
+2026-11-26T03:18:25.0464073Z Preparing to unpack .../3-fonts-unifont_1%3a16.0.04-1build1_all.deb ...
+2026-11-26T03:18:25.0475608Z Unpacking fonts-unifont (1:16.0.04-1build1) ...
+2026-11-26T03:18:25.2599973Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-11-26T03:18:25.2728560Z Preparing to unpack .../4-fonts-wqy-zenhei_0.9.45-8build1_all.deb ...
+2026-11-26T03:18:25.2848681Z Unpacking fonts-wqy-zenhei (0.9.45-8build1) ...
+2026-11-26T03:18:25.4484598Z Selecting previously unselected package xfonts-encodings.
+2026-11-26T03:18:25.4635682Z Preparing to unpack .../5-xfonts-encodings_1%3a1.0.5-0ubuntu3_all.deb ...
+2026-11-26T03:18:25.4646764Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu3) ...
+2026-11-26T03:18:25.4918800Z Selecting previously unselected package xfonts-utils.
+2026-11-26T03:18:25.5059952Z Preparing to unpack .../6-xfonts-utils_1%3a7.7+7build1_amd64v3.deb ...
+2026-11-26T03:18:25.5074770Z Unpacking xfonts-utils (1:7.7+7build1) ...
+2026-11-26T03:18:25.5405351Z Selecting previously unselected package xfonts-cyrillic.
+2026-11-26T03:18:25.5535250Z Preparing to unpack .../7-xfonts-cyrillic_1%3a1.0.5+nmu1build1_all.deb ...
+2026-11-26T03:18:25.5546926Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+2026-11-26T03:18:25.5806182Z Selecting previously unselected package xfonts-scalable.
+2026-11-26T03:18:25.5935494Z Preparing to unpack .../8-xfonts-scalable_1%3a1.0.3-1.3build1_all.deb ...
+2026-11-26T03:18:25.5946548Z Unpacking xfonts-scalable (1:1.0.3-1.3build1) ...
+2026-11-26T03:18:25.6347275Z Setting up fonts-wqy-zenhei (0.9.45-8build1) ...
+2026-11-26T03:18:25.6502029Z Setting up fonts-freefont-ttf (20211204+svn4273-4build1) ...
+2026-11-26T03:18:25.6526192Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+2026-11-26T03:18:25.6549161Z Setting up xfonts-encodings (1:1.0.5-0ubuntu3) ...
+2026-11-26T03:18:25.6575114Z Setting up fonts-ipafont-gothic (00303-23ubuntu1) ...
+2026-11-26T03:18:25.6635060Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-11-26T03:18:25.6653877Z Setting up fonts-unifont (1:16.0.04-1build1) ...
+2026-11-26T03:18:25.6675904Z Setting up xfonts-utils (1:7.7+7build1) ...
+2026-11-26T03:18:25.6734443Z Setting up xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+2026-11-26T03:18:25.7145994Z Setting up xfonts-scalable (1:1.0.3-1.3build1) ...
+2026-11-26T03:18:25.7492921Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-26T03:18:25.7522776Z Not building database; man-db/auto-update is not 'true'.
+2026-11-26T03:18:25.7540468Z Processing triggers for fontconfig (2.17.1-3ubuntu1) ...
+2026-11-26T03:18:26.3779941Z 
+2026-11-26T03:18:26.3781190Z Running kernel seems to be up-to-date.
+2026-11-26T03:18:26.3782425Z 
+2026-11-26T03:18:26.3782631Z Restarting services...
+2026-11-26T03:18:26.3861016Z 
+2026-11-26T03:18:26.3862086Z Service restarts being deferred:
+2026-11-26T03:18:26.3865040Z  systemctl restart hosted-compute-agent.service
+2026-11-26T03:18:26.3865468Z 
+2026-11-26T03:18:26.3865832Z No containers need to be restarted.
+2026-11-26T03:18:26.3866150Z 
+2026-11-26T03:18:26.3866539Z No user sessions are running outdated binaries.
+2026-11-26T03:18:26.3866972Z 
+2026-11-26T03:18:26.3867512Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-26T03:18:27.3267305Z Downloading Chromium 131.0.6778.33 (playwright build v1148) from https://playwright.azureedge.net/builds/chromium/1148/chromium-linux.zip
+2026-11-26T03:18:27.5512634Z |                                                                                |   0% of 161.3 MiB
+2026-11-26T03:18:27.7188524Z |■■■■■■■■                                                                        |  10% of 161.3 MiB
+2026-11-26T03:18:27.7962973Z |■■■■■■■■■■■■■■■■                                                                |  20% of 161.3 MiB
+2026-11-26T03:18:27.8815198Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 161.3 MiB
+2026-11-26T03:18:27.9879983Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 161.3 MiB
+2026-11-26T03:18:28.0777629Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 161.3 MiB
+2026-11-26T03:18:28.2002610Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 161.3 MiB
+2026-11-26T03:18:28.3138800Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 161.3 MiB
+2026-11-26T03:18:28.4050909Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 161.3 MiB
+2026-11-26T03:18:28.5060232Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 161.3 MiB
+2026-11-26T03:18:28.6030201Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 161.3 MiB
+2026-11-26T03:18:31.5272700Z Chromium 131.0.6778.33 (playwright build v1148) downloaded to /home/runner/.cache/ms-playwright/chromium-1148
+2026-11-26T03:18:31.5274401Z Downloading FFMPEG playwright build v1010 from https://playwright.azureedge.net/builds/ffmpeg/1010/ffmpeg-linux.zip
+2026-11-26T03:18:31.7433730Z |                                                                                |   0% of 2.3 MiB
+2026-11-26T03:18:31.7745818Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-11-26T03:18:31.7884905Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-11-26T03:18:31.7984011Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-11-26T03:18:31.8039899Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-11-26T03:18:31.8106577Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-11-26T03:18:31.8144993Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-11-26T03:18:31.8182127Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-11-26T03:18:31.8213590Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-11-26T03:18:31.8237038Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-11-26T03:18:31.8263835Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-11-26T03:18:31.8795147Z FFMPEG playwright build v1010 downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1010
+2026-11-26T03:18:31.8797541Z Downloading Chromium Headless Shell 131.0.6778.33 (playwright build v1148) from https://playwright.azureedge.net/builds/chromium/1148/chromium-headless-shell-linux.zip
+2026-11-26T03:18:32.0870359Z |                                                                                |   0% of 100.9 MiB
+2026-11-26T03:18:32.2374892Z |■■■■■■■■                                                                        |  10% of 100.9 MiB
+2026-11-26T03:18:32.2926144Z |■■■■■■■■■■■■■■■■                                                                |  20% of 100.9 MiB
+2026-11-26T03:18:32.3469750Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 100.9 MiB
+2026-11-26T03:18:32.4145578Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 100.9 MiB
+2026-11-26T03:18:32.4784737Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 100.9 MiB
+2026-11-26T03:18:32.5288833Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 100.9 MiB
+2026-11-26T03:18:32.5869472Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 100.9 MiB
+2026-11-26T03:18:32.6500216Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 100.9 MiB
+2026-11-26T03:18:32.7013711Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 100.9 MiB
+2026-11-26T03:18:32.7631738Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 100.9 MiB
+2026-11-26T03:18:34.5389728Z Chromium Headless Shell 131.0.6778.33 (playwright build v1148) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1148
+2026-11-26T03:18:34.6122399Z ##[group]Run docker compose -f docker-compose.ci.yml up -d --build
+2026-11-26T03:18:34.6122972Z [36;1mdocker compose -f docker-compose.ci.yml up -d --build[0m
+2026-11-26T03:18:34.6146807Z shell: /usr/bin/bash -e {0}
+2026-11-26T03:18:34.6147234Z env:
+2026-11-26T03:18:34.6147598Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:34.6148163Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:18:34.6148968Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:34.6149393Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:34.6149881Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:18:34.6150334Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:18:34.6150725Z ##[endgroup]
+2026-11-26T03:18:34.8183168Z  Image mcr.microsoft.com/mssql/server:2022-latest Pulling 
+2026-11-26T03:18:34.8184030Z  Image nginx:alpine Pulling 
+2026-11-26T03:18:35.0212572Z  0383c74db29f Pulling fs layer 0B
+2026-11-26T03:18:35.0214728Z  b30baa8eef67 Pulling fs layer 0B
+2026-11-26T03:18:35.0215929Z  3c68a67b92bc Pulling fs layer 0B
+2026-11-26T03:18:35.1226940Z  3c68a67b92bc Downloading 5.243MB
+2026-11-26T03:18:35.1228514Z  0383c74db29f Downloading 10.49MB
+2026-11-26T03:18:35.1244735Z  b30baa8eef67 Downloading 6.291MB
+2026-11-26T03:18:35.2239463Z  0383c74db29f Downloading 32.51MB
+2026-11-26T03:18:35.2240112Z  b30baa8eef67 Downloading 24.14MB
+2026-11-26T03:18:35.2240875Z  3c68a67b92bc Downloading 29.36MB
+2026-11-26T03:18:35.3221025Z  0383c74db29f Downloading 55.57MB
+2026-11-26T03:18:35.3221574Z  b30baa8eef67 Downloading 24.14MB
+2026-11-26T03:18:35.3222195Z  3c68a67b92bc Downloading 56.62MB
+2026-11-26T03:18:35.4239351Z  b30baa8eef67 Download complete 0B
+2026-11-26T03:18:35.4240797Z  3c68a67b92bc Downloading 77.59MB
+2026-11-26T03:18:35.4241410Z  0383c74db29f Downloading 75.5MB
+2026-11-26T03:18:35.4259821Z  b30baa8eef67 Extracting 1B
+2026-11-26T03:18:35.5222953Z  3c68a67b92bc Downloading 103.8MB
+2026-11-26T03:18:35.5224754Z  0383c74db29f Downloading 76.45MB
+2026-11-26T03:18:35.5249417Z  b30baa8eef67 Extracting 1B
+2026-11-26T03:18:35.6221283Z  0383c74db29f Downloading 76.45MB
+2026-11-26T03:18:35.6222043Z  3c68a67b92bc Downloading 112.2MB
+2026-11-26T03:18:35.6230646Z  b30baa8eef67 Extracting 1B
+2026-11-26T03:18:35.7223330Z  0383c74db29f Downloading 76.45MB
+2026-11-26T03:18:35.7224471Z  3c68a67b92bc Downloading 113.2MB
+2026-11-26T03:18:35.7236085Z  b30baa8eef67 Extracting 1B
+2026-11-26T03:18:35.8230754Z  3c68a67b92bc Downloading 142.6MB
+2026-11-26T03:18:35.8231887Z  0383c74db29f Downloading 76.45MB
+2026-11-26T03:18:35.8255355Z  b30baa8eef67 Extracting 1B
+2026-11-26T03:18:35.9231330Z  0383c74db29f Download complete 0B
+2026-11-26T03:18:35.9232460Z  3c68a67b92bc Downloading 170.9MB
+2026-11-26T03:18:35.9243173Z  b30baa8eef67 Extracting 1B
+2026-11-26T03:18:36.0099336Z  e5f8fe67c1e1 Pulling fs layer 0B
+2026-11-26T03:18:36.0102244Z  881fc932939e Pulling fs layer 0B
+2026-11-26T03:18:36.0104097Z  272cbe758287 Pulling fs layer 0B
+2026-11-26T03:18:36.0105780Z  fbbe454312b9 Pulling fs layer 0B
+2026-11-26T03:18:36.0120603Z  96001c9779a1 Pulling fs layer 0B
+2026-11-26T03:18:36.0121655Z  85b05bfd25bc Pulling fs layer 0B
+2026-11-26T03:18:36.0122292Z  e9820988621b Pulling fs layer 0B
+2026-11-26T03:18:36.0122915Z  3623869d224d Pulling fs layer 0B
+2026-11-26T03:18:36.0235112Z  3c68a67b92bc Downloading 197.1MB
+2026-11-26T03:18:36.0258393Z  b30baa8eef67 Pull complete 0B
+2026-11-26T03:18:36.1603070Z  3c68a67b92bc Downloading 224.4MB
+2026-11-26T03:18:36.1991138Z  3623869d224d Download complete 0B
+2026-11-26T03:18:36.1993519Z  e5f8fe67c1e1 Downloading 3.146MB
+2026-11-26T03:18:36.1994675Z  881fc932939e Downloading 3.854MB
+2026-11-26T03:18:36.1995555Z  272cbe758287 Downloading 1.049MB
+2026-11-26T03:18:36.1997085Z  fbbe454312b9 Download complete 0B
+2026-11-26T03:18:36.1997860Z  96001c9779a1 Downloading 964B
+2026-11-26T03:18:36.1998791Z  85b05bfd25bc Downloading 404B
+2026-11-26T03:18:36.1999743Z  e9820988621b Downloading 1.211kB
+2026-11-26T03:18:36.2224529Z  3c68a67b92bc Downloading 226.5MB
+2026-11-26T03:18:36.2225236Z  e5f8fe67c1e1 Downloading 7.34MB
+2026-11-26T03:18:36.2225772Z  881fc932939e Downloading 3.854MB
+2026-11-26T03:18:36.2226382Z  272cbe758287 Downloading 4.418MB
+2026-11-26T03:18:36.2226969Z  96001c9779a1 Downloading 964B
+2026-11-26T03:18:36.2227504Z  85b05bfd25bc Downloading 404B
+2026-11-26T03:18:36.3218795Z  272cbe758287 Downloading 4.418MB
+2026-11-26T03:18:36.3249288Z  96001c9779a1 Downloading 964B
+2026-11-26T03:18:36.3250389Z  85b05bfd25bc Downloading 404B
+2026-11-26T03:18:36.3251101Z  3c68a67b92bc Downloading 229.6MB
+2026-11-26T03:18:36.3251588Z  e5f8fe67c1e1 Downloading 10.49MB
+2026-11-26T03:18:36.3252152Z  881fc932939e Downloading 3.854MB
+2026-11-26T03:18:36.4220288Z  96001c9779a1 Downloading 964B
+2026-11-26T03:18:36.4222486Z  85b05bfd25bc Downloading 404B
+2026-11-26T03:18:36.4223462Z  e5f8fe67c1e1 Downloading 20.54MB
+2026-11-26T03:18:36.4224173Z  881fc932939e Downloading 3.854MB
+2026-11-26T03:18:36.4224986Z  272cbe758287 Downloading 4.418MB
+2026-11-26T03:18:36.4225700Z  3c68a67b92bc Downloading 255.9MB
+2026-11-26T03:18:36.5226196Z  3c68a67b92bc Downloading 280MB
+2026-11-26T03:18:36.5231276Z  e9820988621b Download complete 0B
+2026-11-26T03:18:36.5232893Z  e5f8fe67c1e1 Downloading 20.54MB
+2026-11-26T03:18:36.5233560Z  881fc932939e Downloading 3.854MB
+2026-11-26T03:18:36.5234227Z  272cbe758287 Downloading 4.418MB
+2026-11-26T03:18:36.5241641Z  85b05bfd25bc Download complete 0B
+2026-11-26T03:18:36.6225312Z  3c68a67b92bc Downloading 306.2MB
+2026-11-26T03:18:36.6227133Z  272cbe758287 Download complete 0B
+2026-11-26T03:18:36.6229327Z  96001c9779a1 Download complete 0B
+2026-11-26T03:18:36.6235587Z  e5f8fe67c1e1 Download complete 0B
+2026-11-26T03:18:36.6236349Z  881fc932939e Download complete 0B
+2026-11-26T03:18:36.6359518Z  881fc932939e Extracting 1B
+2026-11-26T03:18:36.7214942Z  3872ed807ade Downloading 869.6kB
+2026-11-26T03:18:36.7219638Z  3c68a67b92bc Downloading 321.9MB
+2026-11-26T03:18:36.7328422Z  881fc932939e Extracting 1B
+2026-11-26T03:18:36.8221427Z  3872ed807ade Downloading 869.6kB
+2026-11-26T03:18:36.8232604Z  3c68a67b92bc Downloading 339.7MB
+2026-11-26T03:18:36.8329895Z  881fc932939e Extracting 1B
+2026-11-26T03:18:36.9222281Z  3c68a67b92bc Downloading 368.1MB
+2026-11-26T03:18:36.9223412Z  d970fb760bb2 Download complete 0B
+2026-11-26T03:18:36.9225570Z  3872ed807ade Download complete 0B
+2026-11-26T03:18:36.9411344Z  881fc932939e Extracting 1B
+2026-11-26T03:18:37.0222303Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.0288613Z  881fc932939e Extracting 1B
+2026-11-26T03:18:37.1220222Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.1310586Z  881fc932939e Extracting 1B
+2026-11-26T03:18:37.2222815Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.3221292Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.4228362Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.4301748Z  881fc932939e Pull complete 0B
+2026-11-26T03:18:37.5230006Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.6222161Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.7225556Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.8237688Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:37.9221998Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.0221141Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.0284622Z  272cbe758287 Extracting 1B
+2026-11-26T03:18:38.1222507Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.1286692Z  272cbe758287 Extracting 1B
+2026-11-26T03:18:38.2233692Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.2308526Z  272cbe758287 Extracting 1B
+2026-11-26T03:18:38.3232455Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.3280119Z  272cbe758287 Extracting 1B
+2026-11-26T03:18:38.4229404Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.4291998Z  272cbe758287 Extracting 1B
+2026-11-26T03:18:38.5221985Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.5285658Z  272cbe758287 Extracting 1B
+2026-11-26T03:18:38.6223891Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.7237714Z  3c68a67b92bc Downloading 385.2MB
+2026-11-26T03:18:38.8249209Z  3c68a67b92bc Download complete 0B
+2026-11-26T03:18:38.8255596Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:38.8268930Z  fbbe454312b9 Pull complete 0B
+2026-11-26T03:18:38.8302106Z  272cbe758287 Pull complete 0B
+2026-11-26T03:18:38.9272467Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:38.9279164Z  85b05bfd25bc Extracting 1B
+2026-11-26T03:18:38.9293018Z  96001c9779a1 Pull complete 0B
+2026-11-26T03:18:39.0244765Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.0259614Z  e9820988621b Extracting 1B
+2026-11-26T03:18:39.0269682Z  85b05bfd25bc Pull complete 0B
+2026-11-26T03:18:39.1233224Z  3623869d224d Pull complete 0B
+2026-11-26T03:18:39.1249050Z  e9820988621b Pull complete 0B
+2026-11-26T03:18:39.1273625Z  e5f8fe67c1e1 Extracting 1B
+2026-11-26T03:18:39.1294012Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.2250888Z  e5f8fe67c1e1 Extracting 1B
+2026-11-26T03:18:39.2255670Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.3239919Z  e5f8fe67c1e1 Extracting 1B
+2026-11-26T03:18:39.3258140Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.4237223Z  e5f8fe67c1e1 Extracting 1B
+2026-11-26T03:18:39.4272502Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.5249708Z  e5f8fe67c1e1 Extracting 1B
+2026-11-26T03:18:39.5272530Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.6252893Z  e5f8fe67c1e1 Extracting 1B
+2026-11-26T03:18:39.6263940Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.7261278Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.8245287Z  3c68a67b92bc Extracting 1B
+2026-11-26T03:18:39.9248566Z  e5f8fe67c1e1 Pull complete 0B
+2026-11-26T03:18:39.9256597Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.0246454Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.1254803Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.2252946Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.3251694Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.3488675Z  Image nginx:alpine Pulled 
+2026-11-26T03:18:40.4250113Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.5262620Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.6255985Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.7255429Z  3c68a67b92bc Extracting 2B
+2026-11-26T03:18:40.8259965Z  3c68a67b92bc Extracting 3B
+2026-11-26T03:18:40.9260211Z  3c68a67b92bc Extracting 3B
+2026-11-26T03:18:41.0260030Z  3c68a67b92bc Extracting 3B
+2026-11-26T03:18:41.1254839Z  3c68a67b92bc Extracting 3B
+2026-11-26T03:18:41.2254019Z  3c68a67b92bc Extracting 3B
+2026-11-26T03:18:41.5254107Z  3c68a67b92bc Pull complete 0B
+2026-11-26T03:18:42.1233068Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.2246583Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.3235859Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.4240870Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.5272097Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.6242224Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.7241532Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.8242305Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:42.9242329Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:43.0233810Z  0383c74db29f Extracting 1B
+2026-11-26T03:18:43.2238747Z  0383c74db29f Pull complete 0B
+2026-11-26T03:18:43.2574405Z  Image mcr.microsoft.com/mssql/server:2022-latest Pulled 
+2026-11-26T03:18:44.8975491Z  Image medical_record_autotesting-backend Building 
+2026-11-26T03:18:45.8595778Z #1 [internal] load local bake definitions
+2026-11-26T03:18:46.0099782Z #1 reading from stdin 670B done
+2026-11-26T03:18:46.0100335Z #1 DONE 0.0s
+2026-11-26T03:18:46.9211648Z 
+2026-11-26T03:18:46.9212690Z #2 [internal] load build definition from Dockerfile
+2026-11-26T03:18:46.9213546Z #2 transferring dockerfile: 406B done
+2026-11-26T03:18:46.9214071Z #2 DONE 0.1s
+2026-11-26T03:18:46.9214229Z 
+2026-11-26T03:18:46.9214471Z #3 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+2026-11-26T03:18:47.5199157Z #3 ...
+2026-11-26T03:18:47.5199504Z 
+2026-11-26T03:18:47.5199924Z #4 [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+2026-11-26T03:18:47.5200797Z #4 DONE 0.7s
+2026-11-26T03:18:47.6234637Z 
+2026-11-26T03:18:47.6235578Z #3 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+2026-11-26T03:18:47.6236571Z #3 DONE 0.7s
+2026-11-26T03:18:47.6236856Z 
+2026-11-26T03:18:47.6237072Z #5 [internal] load .dockerignore
+2026-11-26T03:18:47.6237590Z #5 transferring context: 2B done
+2026-11-26T03:18:47.6238069Z #5 DONE 0.0s
+2026-11-26T03:18:47.6238539Z 
+2026-11-26T03:18:47.6239211Z #6 [final 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21
+2026-11-26T03:18:47.6240729Z #6 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21 0.0s done
+2026-11-26T03:18:48.5073019Z #6 ...
+2026-11-26T03:18:48.5073386Z 
+2026-11-26T03:18:48.5074315Z #7 [internal] load build context
+2026-11-26T03:18:48.5075173Z #7 transferring context: 287.78kB done
+2026-11-26T03:18:48.5076149Z #7 DONE 0.9s
+2026-11-26T03:18:48.6579708Z 
+2026-11-26T03:18:48.6581226Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:48.6582912Z #8 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d 0.0s done
+2026-11-26T03:18:48.6851090Z #8 ...
+2026-11-26T03:18:48.6851459Z 
+2026-11-26T03:18:48.6852316Z #6 [final 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21
+2026-11-26T03:18:48.6853088Z #6 DONE 1.1s
+2026-11-26T03:18:48.8442620Z 
+2026-11-26T03:18:48.8444057Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:49.3004433Z #8 sha256:0eafcc3329143a0afc683fa5cefc306ba3b0bc2bd4f05c20c9902328926a2603 534B / 534B 0.2s done
+2026-11-26T03:18:49.4189974Z #8 sha256:34b01e5d7164c754cb4f34b954db7e23ead5f35f21e858f9361fe010659b9220 18.47MB / 18.47MB 0.2s
+2026-11-26T03:18:49.5308954Z #8 sha256:34b01e5d7164c754cb4f34b954db7e23ead5f35f21e858f9361fe010659b9220 18.47MB / 18.47MB 0.2s done
+2026-11-26T03:18:49.5310272Z #8 sha256:1c511099a541c8230ff434650271e2d6a4c10f12f56b3817be0ac3ad152293f5 18.59MB / 18.59MB 0.2s
+2026-11-26T03:18:49.7143180Z #8 sha256:1c511099a541c8230ff434650271e2d6a4c10f12f56b3817be0ac3ad152293f5 18.59MB / 18.59MB 0.2s done
+2026-11-26T03:18:49.7144572Z #8 sha256:07dd3c1234846fe00afd72966a57442a5905d6d3e4b78e353545106f42f22b30 20.97MB / 197.32MB 0.2s
+2026-11-26T03:18:49.7145702Z #8 sha256:d5815ddf1585f6cc0bb625020fc53c91a58900819546a8ad8af5206e0492d4ad 24.47MB / 24.47MB 0.3s done
+2026-11-26T03:18:49.8716100Z #8 sha256:07dd3c1234846fe00afd72966a57442a5905d6d3e4b78e353545106f42f22b30 105.91MB / 197.32MB 0.5s
+2026-11-26T03:18:50.0211425Z #8 sha256:07dd3c1234846fe00afd72966a57442a5905d6d3e4b78e353545106f42f22b30 152.04MB / 197.32MB 0.6s
+2026-11-26T03:18:50.1710886Z #8 sha256:07dd3c1234846fe00afd72966a57442a5905d6d3e4b78e353545106f42f22b30 197.32MB / 197.32MB 0.8s
+2026-11-26T03:18:51.2109091Z #8 sha256:07dd3c1234846fe00afd72966a57442a5905d6d3e4b78e353545106f42f22b30 197.32MB / 197.32MB 1.8s done
+2026-11-26T03:18:51.3612676Z #8 DONE 3.7s
+2026-11-26T03:18:51.3613544Z 
+2026-11-26T03:18:51.3614590Z #6 [final 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21
+2026-11-26T03:18:51.3616121Z #6 sha256:272c58efda97a52806227b3e447acd6702aab00340ec9f9a604c7dcbc2b576c9 155B / 155B 0.1s done
+2026-11-26T03:18:51.3617539Z #6 sha256:21e39e10606fb97840fdd1584ddc89bd179e2837a94deffb396f9dd617f3d7cc 3.61kB / 3.61kB 0.0s done
+2026-11-26T03:18:51.3618923Z #6 sha256:8a289e1ea591be9bef121e317e5d5bf700ceae1fadaa1c18bed162f34b618aad 13.11MB / 13.11MB 0.2s done
+2026-11-26T03:18:51.3619937Z #6 sha256:590be7a8d3a7db18065dcabf2a85cde9ce304c17c0094046aeea47168329823b 37.60MB / 37.60MB 0.7s done
+2026-11-26T03:18:51.3620996Z #6 sha256:245c91b0e5fdf53496508e0512203aedfb2d8e88a84e17c78745832cfec9fa71 29.79MB / 29.79MB 0.6s done
+2026-11-26T03:18:51.3622174Z #6 sha256:bbb89ae32e02e0d7491ca516adbb024a1bb6f7891652d2b34e659d153d8fb58b 17.16MB / 17.16MB 0.6s done
+2026-11-26T03:18:51.3623136Z #6 extracting sha256:245c91b0e5fdf53496508e0512203aedfb2d8e88a84e17c78745832cfec9fa71 1.7s done
+2026-11-26T03:18:51.3623881Z #6 extracting sha256:bbb89ae32e02e0d7491ca516adbb024a1bb6f7891652d2b34e659d153d8fb58b
+2026-11-26T03:18:51.5134920Z #6 extracting sha256:bbb89ae32e02e0d7491ca516adbb024a1bb6f7891652d2b34e659d153d8fb58b 0.4s done
+2026-11-26T03:18:51.5135892Z #6 DONE 3.9s
+2026-11-26T03:18:51.6722258Z 
+2026-11-26T03:18:51.6724037Z #6 [final 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21
+2026-11-26T03:18:51.6725833Z #6 extracting sha256:21e39e10606fb97840fdd1584ddc89bd179e2837a94deffb396f9dd617f3d7cc done
+2026-11-26T03:18:51.6727407Z #6 extracting sha256:590be7a8d3a7db18065dcabf2a85cde9ce304c17c0094046aeea47168329823b
+2026-11-26T03:18:52.0588409Z #6 extracting sha256:590be7a8d3a7db18065dcabf2a85cde9ce304c17c0094046aeea47168329823b 0.5s done
+2026-11-26T03:18:52.0589406Z #6 DONE 4.5s
+2026-11-26T03:18:52.2164603Z 
+2026-11-26T03:18:52.2166116Z #6 [final 1/3] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21
+2026-11-26T03:18:52.2167450Z #6 extracting sha256:272c58efda97a52806227b3e447acd6702aab00340ec9f9a604c7dcbc2b576c9 done
+2026-11-26T03:18:52.2168732Z #6 extracting sha256:8a289e1ea591be9bef121e317e5d5bf700ceae1fadaa1c18bed162f34b618aad
+2026-11-26T03:18:52.2289500Z #6 extracting sha256:8a289e1ea591be9bef121e317e5d5bf700ceae1fadaa1c18bed162f34b618aad 0.2s done
+2026-11-26T03:18:52.2290478Z #6 DONE 4.7s
+2026-11-26T03:18:52.3803702Z 
+2026-11-26T03:18:52.3805135Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:52.3806424Z #8 extracting sha256:d5815ddf1585f6cc0bb625020fc53c91a58900819546a8ad8af5206e0492d4ad
+2026-11-26T03:18:53.4172099Z #8 extracting sha256:d5815ddf1585f6cc0bb625020fc53c91a58900819546a8ad8af5206e0492d4ad 1.2s done
+2026-11-26T03:18:53.4173263Z #8 DONE 4.8s
+2026-11-26T03:18:53.4173440Z 
+2026-11-26T03:18:53.4173652Z #9 [final 2/3] WORKDIR /app
+2026-11-26T03:18:56.8872789Z #9 ...
+2026-11-26T03:18:56.8873091Z 
+2026-11-26T03:18:56.8873891Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:56.8874784Z #8 extracting sha256:07dd3c1234846fe00afd72966a57442a5905d6d3e4b78e353545106f42f22b30 3.5s done
+2026-11-26T03:18:56.8875406Z #8 DONE 8.3s
+2026-11-26T03:18:57.0375333Z 
+2026-11-26T03:18:57.0376505Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:57.0377519Z #8 extracting sha256:1c511099a541c8230ff434650271e2d6a4c10f12f56b3817be0ac3ad152293f5
+2026-11-26T03:18:57.2975854Z #8 extracting sha256:1c511099a541c8230ff434650271e2d6a4c10f12f56b3817be0ac3ad152293f5 0.4s done
+2026-11-26T03:18:57.2976676Z #8 DONE 8.7s
+2026-11-26T03:18:57.2977319Z 
+2026-11-26T03:18:57.2977499Z #9 [final 2/3] WORKDIR /app
+2026-11-26T03:18:57.4190388Z #9 ...
+2026-11-26T03:18:57.4190834Z 
+2026-11-26T03:18:57.4191328Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:57.4192088Z #8 extracting sha256:0eafcc3329143a0afc683fa5cefc306ba3b0bc2bd4f05c20c9902328926a2603 0.1s done
+2026-11-26T03:18:57.4192601Z #8 DONE 8.8s
+2026-11-26T03:18:57.5696654Z 
+2026-11-26T03:18:57.5697965Z #8 [build 1/6] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d
+2026-11-26T03:18:57.5699445Z #8 extracting sha256:34b01e5d7164c754cb4f34b954db7e23ead5f35f21e858f9361fe010659b9220
+2026-11-26T03:18:57.9374190Z #8 extracting sha256:34b01e5d7164c754cb4f34b954db7e23ead5f35f21e858f9361fe010659b9220 0.5s done
+2026-11-26T03:18:57.9375243Z #8 DONE 9.4s
+2026-11-26T03:18:57.9375825Z 
+2026-11-26T03:18:57.9376047Z #9 [final 2/3] WORKDIR /app
+2026-11-26T03:18:58.1090348Z #9 ...
+2026-11-26T03:18:58.1090598Z 
+2026-11-26T03:18:58.1091004Z #10 [build 2/6] WORKDIR /src
+2026-11-26T03:19:01.8183173Z #10 ...
+2026-11-26T03:19:01.8183494Z 
+2026-11-26T03:19:01.8183864Z #9 [final 2/3] WORKDIR /app
+2026-11-26T03:19:01.8184347Z #9 DONE 9.6s
+2026-11-26T03:19:01.9685799Z 
+2026-11-26T03:19:03.0699626Z #10 [build 2/6] WORKDIR /src
+2026-11-26T03:19:03.0700248Z #10 DONE 5.1s
+2026-11-26T03:19:03.2406504Z 
+2026-11-26T03:19:03.2407277Z #11 [build 3/6] COPY [DATN_TestSUT.csproj, ./]
+2026-11-26T03:19:03.2407964Z #11 DONE 0.0s
+2026-11-26T03:19:03.2408659Z 
+2026-11-26T03:19:03.2408990Z #12 [build 4/6] RUN dotnet restore "DATN_TestSUT.csproj"
+2026-11-26T03:19:03.7152036Z #12 0.625   Determining projects to restore...
+2026-11-26T03:19:06.3776222Z #12 3.288   Restored /src/DATN_TestSUT.csproj (in 2.38 sec).
+2026-11-26T03:19:07.2606607Z #12 DONE 4.2s
+2026-11-26T03:19:07.4439022Z 
+2026-11-26T03:19:07.4439823Z #13 [build 5/6] COPY . .
+2026-11-26T03:19:07.4440735Z #13 DONE 0.0s
+2026-11-26T03:19:07.4441098Z 
+2026-11-26T03:19:07.4441789Z #14 [build 6/6] RUN dotnet publish "DATN_TestSUT.csproj" -c Release -o /app/publish
+2026-11-26T03:19:08.0341392Z #14 0.740   Determining projects to restore...
+2026-11-26T03:19:08.6277657Z #14 1.334   Restored /src/DATN_TestSUT.csproj (in 288 ms).
+2026-11-26T03:19:10.9937865Z #14 3.700 /src/Models/Doctor.cs(2,7): warning CS0105: The using directive for 'System.ComponentModel.DataAnnotations' appeared previously in this namespace [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1441770Z #14 3.700 /src/Models/Patient.cs(11,23): warning CS8618: Non-nullable property 'MaBenhNhan' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1443764Z #14 3.700 /src/Models/Patient.cs(12,23): warning CS8618: Non-nullable property 'SoCCCD' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1445412Z #14 3.700 /src/Models/Patient.cs(13,23): warning CS8618: Non-nullable property 'HoVaTen' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1446982Z #14 3.700 /src/Models/Patient.cs(15,23): warning CS8618: Non-nullable property 'GioiTinh' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1448701Z #14 3.700 /src/Models/Patient.cs(16,23): warning CS8618: Non-nullable property 'Sdt' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1450668Z #14 3.700 /src/Models/Patient.cs(17,23): warning CS8618: Non-nullable property 'DiaChi' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1452094Z #14 3.700 /src/Models/MedicalRecord.cs(11,23): warning CS8618: Non-nullable property 'MaCaKham' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1453604Z #14 3.700 /src/Models/MedicalRecord.cs(12,23): warning CS8618: Non-nullable property 'MaBenhNhan' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1455266Z #14 3.700 /src/Models/MedicalRecord.cs(13,23): warning CS8618: Non-nullable property 'MaBacSi' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1456791Z #14 3.700 /src/Models/Doctor.cs(11,23): warning CS8618: Non-nullable property 'MaBacSi' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1458346Z #14 3.700 /src/Models/Doctor.cs(12,23): warning CS8618: Non-nullable property 'TenBacSi' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1459799Z #14 3.700 /src/Models/Doctor.cs(13,23): warning CS8618: Non-nullable property 'ChuyenKhoa' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1461220Z #14 3.700 /src/Models/User.cs(10,23): warning CS8618: Non-nullable property 'TenDangNhap' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1462613Z #14 3.700 /src/Models/User.cs(11,23): warning CS8618: Non-nullable property 'MatKhau' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1463949Z #14 3.700 /src/Models/User.cs(12,23): warning CS8618: Non-nullable property 'VaiTro' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1465448Z #14 3.700 /src/Controllers/AuthController.cs(71,23): warning CS8618: Non-nullable property 'TenDangNhap' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1466938Z #14 3.700 /src/Controllers/AuthController.cs(72,23): warning CS8618: Non-nullable property 'MatKhau' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1468105Z #14 3.700 /src/Controllers/TimelineController.cs(125,27): warning CS8601: Possible null reference assignment. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1469397Z #14 3.700 /src/Controllers/PatientsController.cs(57,27): warning CS8618: Non-nullable property 'Sdt' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.1470908Z #14 3.700 /src/Controllers/PatientsController.cs(58,27): warning CS8618: Non-nullable property 'DiaChi' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/DATN_TestSUT.csproj]
+2026-11-26T03:19:11.3167171Z #14 4.023   DATN_TestSUT -> /src/bin/Release/net10.0/DATN_TestSUT.dll
+2026-11-26T03:19:11.4846282Z #14 4.103   DATN_TestSUT -> /app/publish/
+2026-11-26T03:19:11.4846982Z #14 DONE 4.2s
+2026-11-26T03:19:11.6302079Z 
+2026-11-26T03:19:11.6303211Z #15 [final 3/3] COPY --from=build /app/publish .
+2026-11-26T03:19:11.6303987Z #15 DONE 0.1s
+2026-11-26T03:19:11.7833691Z 
+2026-11-26T03:19:11.7834483Z #16 exporting to image
+2026-11-26T03:19:11.7835048Z #16 exporting layers
+2026-11-26T03:19:12.3217330Z #16 exporting layers 0.7s done
+2026-11-26T03:19:12.4621296Z #16 exporting manifest sha256:79e3f8eb19c42c8b69ccf228da75a31dff84910eb01e244906c939435d8156fd done
+2026-11-26T03:19:12.4622576Z #16 exporting config sha256:56b846718728ee45c9dc0895a6bd5c8c8b149e98fe820cc03d06c01ffa8815c8 done
+2026-11-26T03:19:12.4623514Z #16 exporting attestation manifest sha256:15df15f6e3fbf2014c70a461798f80c2bb37533623545c1df1c6cbda122e2df4 done
+2026-11-26T03:19:12.4624787Z #16 exporting manifest list sha256:adee0cc0078e30847e7c870dbb79ef5d9a542bd736114438321796915b466e09 done
+2026-11-26T03:19:12.4626256Z #16 naming to docker.io/library/medical_record_autotesting-backend:latest done
+2026-11-26T03:19:12.4627329Z #16 unpacking to docker.io/library/medical_record_autotesting-backend:latest 0.1s done
+2026-11-26T03:19:12.5388508Z #16 DONE 0.8s
+2026-11-26T03:19:12.5389403Z  Image medical_record_autotesting-backend Built 
+2026-11-26T03:19:12.5390055Z 
+2026-11-26T03:19:12.5390260Z #17 resolving provenance for metadata file
+2026-11-26T03:19:12.5390838Z #17 DONE 0.0s
+2026-11-26T03:19:12.5410441Z  Network medical_record_autotesting_default Creating 
+2026-11-26T03:19:12.5642254Z  Network medical_record_autotesting_default Created 
+2026-11-26T03:19:12.5653087Z  Container ci-sqlserver Creating 
+2026-11-26T03:19:12.6975862Z  Container ci-sqlserver Created 
+2026-11-26T03:19:12.6976572Z  Container ci-backend Creating 
+2026-11-26T03:19:12.7271313Z  Container ci-backend Created 
+2026-11-26T03:19:12.7272254Z  Container ci-frontend Creating 
+2026-11-26T03:19:12.7636754Z  Container ci-frontend Created 
+2026-11-26T03:19:12.7878435Z  Container ci-sqlserver Starting 
+2026-11-26T03:19:12.9529993Z  Container ci-sqlserver Started 
+2026-11-26T03:19:12.9530984Z  Container ci-sqlserver Waiting 
+2026-11-26T03:19:18.4545062Z  Container ci-sqlserver Healthy 
+2026-11-26T03:19:18.4545833Z  Container ci-backend Starting 
+2026-11-26T03:19:18.5706646Z  Container ci-backend Started 
+2026-11-26T03:19:18.5708995Z  Container ci-frontend Starting 
+2026-11-26T03:19:18.7062031Z  Container ci-frontend Started 
+2026-11-26T03:19:18.7175498Z ##[group]Run for i in $(seq 1 20); do
+2026-11-26T03:19:18.7175916Z [36;1mfor i in $(seq 1 20); do[0m
+2026-11-26T03:19:18.7176673Z [36;1m  if docker exec ci-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "StrongPassword123!" -C -Q "SELECT 1" > /dev/null 2>&1; then[0m
+2026-11-26T03:19:18.7177325Z [36;1m    echo "SQL Server is healthy!"[0m
+2026-11-26T03:19:18.7177703Z [36;1m    break[0m
+2026-11-26T03:19:18.7178002Z [36;1m  fi[0m
+2026-11-26T03:19:18.7178509Z [36;1m  echo "Waiting for SQL Server... ($i/20)"[0m
+2026-11-26T03:19:18.7178911Z [36;1m  sleep 3[0m
+2026-11-26T03:19:18.7179239Z [36;1mdone[0m
+2026-11-26T03:19:18.7179783Z [36;1mdocker exec ci-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "StrongPassword123!" -C -i /init-db.sql[0m
+2026-11-26T03:19:18.7202532Z shell: /usr/bin/bash -e {0}
+2026-11-26T03:19:18.7202933Z env:
+2026-11-26T03:19:18.7203297Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:18.7203941Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:19:18.7204441Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:18.7204902Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:18.7205367Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:18.7205844Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:19:18.7206273Z ##[endgroup]
+2026-11-26T03:19:18.8049341Z SQL Server is healthy!
+2026-11-26T03:19:19.1125442Z Changed database context to 'MedicalRecordSystem'.
+2026-11-26T03:19:19.1232464Z Changed database context to 'MedicalRecordSystem'.
+2026-11-26T03:19:19.1463712Z 
+2026-11-26T03:19:19.1464264Z (1 rows affected)
+2026-11-26T03:19:19.1464578Z 
+2026-11-26T03:19:19.1464713Z (1 rows affected)
+2026-11-26T03:19:19.1465073Z 
+2026-11-26T03:19:19.1465250Z (1 rows affected)
+2026-11-26T03:19:19.1465475Z 
+2026-11-26T03:19:19.1465643Z (1 rows affected)
+2026-11-26T03:19:19.1465832Z 
+2026-11-26T03:19:19.1466376Z (1 rows affected)
+2026-11-26T03:19:19.1466555Z 
+2026-11-26T03:19:19.1466716Z (1 rows affected)
+2026-11-26T03:19:19.1466926Z 
+2026-11-26T03:19:19.1467047Z (1 rows affected)
+2026-11-26T03:19:19.1467242Z 
+2026-11-26T03:19:19.1467369Z (1 rows affected)
+2026-11-26T03:19:19.1550118Z ##[group]Run for i in $(seq 1 25); do
+2026-11-26T03:19:19.1550599Z [36;1mfor i in $(seq 1 25); do[0m
+2026-11-26T03:19:19.1551282Z [36;1m  STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://localhost:7053/api/v1/auth/login -H "Content-Type: application/json" -d '{}')[0m
+2026-11-26T03:19:19.1551970Z [36;1m  if [ "$STATUS" = "400" ] || [ "$STATUS" = "200" ] || [ "$STATUS" = "401" ]; then[0m
+2026-11-26T03:19:19.1552459Z [36;1m    echo "Backend is ready (HTTP $STATUS)!"[0m
+2026-11-26T03:19:19.1552822Z [36;1m    break[0m
+2026-11-26T03:19:19.1553166Z [36;1m  fi[0m
+2026-11-26T03:19:19.1553498Z [36;1m  echo "Waiting for Backend... ($i/25)"[0m
+2026-11-26T03:19:19.1553845Z [36;1m  sleep 3[0m
+2026-11-26T03:19:19.1554177Z [36;1mdone[0m
+2026-11-26T03:19:19.1554599Z [36;1mcurl -sf http://localhost:5500/login.html > /dev/null && echo "Frontend is ready!"[0m
+2026-11-26T03:19:19.1576984Z shell: /usr/bin/bash -e {0}
+2026-11-26T03:19:19.1577353Z env:
+2026-11-26T03:19:19.1577899Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.1578719Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:19:19.1579249Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.1579726Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.1580182Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.1580616Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:19:19.1581015Z ##[endgroup]
+2026-11-26T03:19:19.3728594Z Backend is ready (HTTP 400)!
+2026-11-26T03:19:19.3804117Z Frontend is ready!
+2026-11-26T03:19:19.3845773Z ##[group]Run mkdir -p artifacts/screenshots
+2026-11-26T03:19:19.3846256Z [36;1mmkdir -p artifacts/screenshots[0m
+2026-11-26T03:19:19.3846612Z [36;1mset -o pipefail[0m
+2026-11-26T03:19:19.3847099Z [36;1mpytest tests -v --alluredir=allure-results 2>&1 | tee artifacts/full-suite.log[0m
+2026-11-26T03:19:19.3868544Z shell: /usr/bin/bash -e {0}
+2026-11-26T03:19:19.3868988Z env:
+2026-11-26T03:19:19.3869388Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.3869907Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:19:19.3870390Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.3870826Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.3871295Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:19.3871777Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:19:19.3872358Z   API_BASE_URL: http://localhost:7053/api/v1
+2026-11-26T03:19:19.3872734Z   WEB_BASE_URL: http://localhost:5500
+2026-11-26T03:19:19.3873092Z   UI_BASE_URL: http://localhost:5500
+2026-11-26T03:19:19.3873509Z ##[endgroup]
+2026-11-26T03:19:20.3846858Z ============================= test session starts ==============================
+2026-11-26T03:19:20.3848360Z platform linux -- Python 3.12.16, pytest-8.1.1, pluggy-1.7.0 -- /opt/hostedtoolcache/Python/3.12.16/x64/bin/python
+2026-11-26T03:19:20.3849363Z cachedir: .pytest_cache
+2026-11-26T03:19:20.3850202Z rootdir: /home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting
+2026-11-26T03:19:20.3851103Z configfile: pytest.ini
+2026-11-26T03:19:20.3851922Z plugins: base-url-2.1.0, playwright-0.6.0, allure-pytest-2.13.5, cov-7.1.0, Faker-24.4.0
+2026-11-26T03:19:20.4698600Z collecting ... collected 50 items
+2026-11-26T03:19:20.4699116Z 
+2026-11-26T03:19:21.2883219Z tests/api/test_add_doctor_api.py::TestAddDoctorAPI::test_api7_01_create_doctor_success PASSED
+2026-11-26T03:19:21.3188748Z tests/api/test_add_doctor_api.py::TestAddDoctorAPI::test_api7_02_create_doctor_duplicate PASSED
+2026-11-26T03:19:21.3239815Z tests/api/test_add_doctor_api.py::TestAddDoctorAPI::test_api7_03_create_doctor_missing_req PASSED
+2026-11-26T03:19:21.3284906Z tests/api/test_add_doctor_api.py::TestAddDoctorAPI::test_api7_04_create_doctor_wrong_role PASSED
+2026-11-26T03:19:21.3329014Z tests/api/test_add_doctor_api.py::TestAddDoctorAPI::test_api7_05_create_doctor_no_auth PASSED
+2026-11-26T03:19:21.4518604Z tests/api/test_add_patient_api.py::TestAddPatientAPI::test_api5_01_create_patient_success PASSED
+2026-11-26T03:19:21.4651033Z tests/api/test_add_patient_api.py::TestAddPatientAPI::test_api5_02_create_patient_duplicate PASSED
+2026-11-26T03:19:21.4699710Z tests/api/test_add_patient_api.py::TestAddPatientAPI::test_api5_03_create_patient_missing_req PASSED
+2026-11-26T03:19:21.4749151Z tests/api/test_add_patient_api.py::TestAddPatientAPI::test_api5_04_create_patient_min_data PASSED
+2026-11-26T03:19:21.4808701Z tests/api/test_add_patient_api.py::TestAddPatientAPI::test_api5_05_create_patient_bad_date PASSED
+2026-11-26T03:19:21.5150481Z tests/api/test_add_record_api.py::TestAddRecordAPI::test_api4_01_create_record_success PASSED
+2026-11-26T03:19:21.5240250Z tests/api/test_add_record_api.py::TestAddRecordAPI::test_api4_02_create_record_opt_field PASSED
+2026-11-26T03:19:21.5276262Z tests/api/test_add_record_api.py::TestAddRecordAPI::test_api4_03_create_record_missing PASSED
+2026-11-26T03:19:21.5320588Z tests/api/test_add_record_api.py::TestAddRecordAPI::test_api4_04_create_record_max_len PASSED
+2026-11-26T03:19:21.5364839Z tests/api/test_add_record_api.py::TestAddRecordAPI::test_api4_05_create_record_wrong_role PASSED
+2026-11-26T03:19:21.5623072Z tests/api/test_auth_api.py::TestAuthAPI::test_api1_01_login_doctor_success PASSED
+2026-11-26T03:19:21.5695362Z tests/api/test_auth_api.py::TestAuthAPI::test_api1_02_login_patient_success PASSED
+2026-11-26T03:19:21.5753915Z tests/api/test_auth_api.py::TestAuthAPI::test_api1_03_login_wrong_password PASSED
+2026-11-26T03:19:21.5795012Z tests/api/test_auth_api.py::TestAuthAPI::test_api1_04_login_empty_data PASSED
+2026-11-26T03:19:21.5864947Z tests/api/test_auth_api.py::TestAuthAPI::test_api1_05_login_invalid_format PASSED
+2026-11-26T03:19:21.6033914Z tests/api/test_doctor_list_api.py::TestDoctorListAPI::test_api6_01_doctors_get_all PASSED
+2026-11-26T03:19:21.6393034Z tests/api/test_doctor_list_api.py::TestDoctorListAPI::test_api6_02_doctors_filter_exist PASSED
+2026-11-26T03:19:21.6459063Z tests/api/test_doctor_list_api.py::TestDoctorListAPI::test_api6_03_doctors_filter_empty PASSED
+2026-11-26T03:19:21.6517343Z tests/api/test_doctor_list_api.py::TestDoctorListAPI::test_api6_04_doctors_encoding PASSED
+2026-11-26T03:19:21.6560369Z tests/api/test_doctor_list_api.py::TestDoctorListAPI::test_api6_05_doctors_no_auth PASSED
+2026-11-26T03:19:21.6689170Z tests/api/test_patient_list_api.py::TestPatientListAPI::test_api8_01_get_patients_success PASSED
+2026-11-26T03:19:21.6848813Z tests/api/test_patient_list_api.py::TestPatientListAPI::test_api8_02_get_patients_empty PASSED
+2026-11-26T03:19:21.6904589Z tests/api/test_patient_list_api.py::TestPatientListAPI::test_api8_03_get_patients_invalid_param PASSED
+2026-11-26T03:19:21.6949733Z tests/api/test_patient_list_api.py::TestPatientListAPI::test_api8_04_get_patients_wrong_role PASSED
+2026-11-26T03:19:21.6989665Z tests/api/test_patient_list_api.py::TestPatientListAPI::test_api8_05_get_patients_no_auth PASSED
+2026-11-26T03:19:21.7156502Z tests/api/test_search_api.py::TestSearchAPI::test_api2_01_search_valid_cccd PASSED
+2026-11-26T03:19:21.7233002Z tests/api/test_search_api.py::TestSearchAPI::test_api2_02_search_not_found PASSED
+2026-11-26T03:19:21.7290176Z tests/api/test_search_api.py::TestSearchAPI::test_api2_03_search_invalid_length PASSED
+2026-11-26T03:19:21.7332309Z tests/api/test_search_api.py::TestSearchAPI::test_api2_04_search_special_chars PASSED
+2026-11-26T03:19:21.7375303Z tests/api/test_search_api.py::TestSearchAPI::test_api2_05_search_missing_param PASSED
+2026-11-26T03:19:21.7726500Z tests/api/test_timeline_api.py::TestTimelineAPI::test_api3_01_timeline_has_data PASSED
+2026-11-26T03:19:21.7805321Z tests/api/test_timeline_api.py::TestTimelineAPI::test_api3_02_timeline_empty PASSED
+2026-11-26T03:19:21.7862949Z tests/api/test_timeline_api.py::TestTimelineAPI::test_api3_03_timeline_not_found PASSED
+2026-11-26T03:19:21.7905054Z tests/api/test_timeline_api.py::TestTimelineAPI::test_api3_04_timeline_no_auth PASSED
+2026-11-26T03:19:21.7966069Z tests/api/test_timeline_api.py::TestTimelineAPI::test_api3_05_timeline_sqli PASSED
+2026-11-26T03:19:22.9597481Z tests/e2e/test_doctor_ui.py::test_tc_ui_05_doctor_search_patient_success[chromium] PASSED
+2026-11-26T03:19:23.8576890Z tests/e2e/test_doctor_ui.py::test_tc_ui_06_doctor_search_not_found[chromium] PASSED
+2026-11-26T03:19:25.2450165Z tests/e2e/test_doctor_ui.py::test_tc_ui_07_doctor_view_timeline[chromium] PASSED
+2026-11-26T03:19:26.7100002Z tests/e2e/test_doctor_ui.py::test_tc_ui_08_doctor_add_record_missing_fields[chromium] PASSED
+2026-11-26T03:19:28.2880521Z tests/e2e/test_doctor_ui.py::test_tc_ui_09_doctor_add_record_success[chromium] PASSED
+2026-11-26T03:19:28.5439985Z tests/e2e/test_login_ui.py::TestLoginUI::test_tc_ui_01_login_doctor_success[chromium] PASSED
+2026-11-26T03:19:28.8980194Z tests/e2e/test_login_ui.py::TestLoginUI::test_tc_ui_02_login_patient_success[chromium] PASSED
+2026-11-26T03:19:29.3955791Z tests/e2e/test_login_ui.py::TestLoginUI::test_tc_ui_03_login_wrong_password[chromium] PASSED
+2026-11-26T03:19:29.7637081Z tests/e2e/test_login_ui.py::TestLoginUI::test_tc_ui_04_login_empty_fields[chromium] PASSED
+2026-11-26T03:19:30.1647867Z tests/e2e/test_patient_ui.py::TestPatientUI::test_tc_ui_10_patient_view_own_timeline[chromium] PASSED
+2026-11-26T03:19:30.1649035Z 
+2026-11-26T03:19:30.1649436Z ============================== 50 passed in 9.78s ==============================
+2026-11-26T03:19:30.2454236Z ##[group]Run actions/upload-artifact@v4
+2026-11-26T03:19:30.2454627Z with:
+2026-11-26T03:19:30.2455006Z   name: ci-test-artifacts-8de8138cd1bbdac7942b1104f461c569a21e7099
+2026-11-26T03:19:30.2455452Z   path: allure-results
+artifacts
+
+2026-11-26T03:19:30.2455882Z   retention-days: 14
+2026-11-26T03:19:30.2456193Z   if-no-files-found: warn
+2026-11-26T03:19:30.2456531Z   compression-level: 6
+2026-11-26T03:19:30.2456822Z   overwrite: false
+2026-11-26T03:19:30.2457102Z   include-hidden-files: false
+2026-11-26T03:19:30.2457460Z env:
+2026-11-26T03:19:30.2457789Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:30.2458470Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:19:30.2458959Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:30.2459405Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:30.2459895Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:30.2460432Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:19:30.2460849Z ##[endgroup]
+2026-11-26T03:19:30.4111932Z (node:4325) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-26T03:19:30.4113183Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-26T03:19:30.4771828Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-26T03:19:30.4773040Z The least common ancestor is /home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting. This will be the root directory of the artifact
+2026-11-26T03:19:30.4773910Z With the provided path, there will be 285 files uploaded
+2026-11-26T03:19:30.4774865Z Artifact name is valid!
+2026-11-26T03:19:30.4775195Z Root directory input is valid!
+2026-11-26T03:19:30.7432307Z Beginning upload of artifact content to blob storage
+2026-11-26T03:19:30.9789744Z (node:4325) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-26T03:19:31.1898734Z Uploaded bytes 1504834
+2026-11-26T03:19:31.2123939Z Finished uploading artifact content to blob storage!
+2026-11-26T03:19:31.2124829Z SHA256 digest of uploaded artifact zip is f0da05e2cc4f6dc0e001056a0f49ad3d4f65555de469b2af2ab1cba70f74dd68
+2026-11-26T03:19:31.2126231Z Finalizing artifact upload
+2026-11-26T03:19:31.5454029Z Artifact ci-test-artifacts-8de8138cd1bbdac7942b1104f461c569a21e7099.zip successfully finalized. Artifact ID 15084601298
+2026-11-26T03:19:31.5455773Z Artifact ci-test-artifacts-8de8138cd1bbdac7942b1104f461c569a21e7099 has been successfully uploaded! Final size is 1504834 bytes. Artifact ID is 15084601298
+2026-11-26T03:19:31.5462217Z Artifact download URL: https://github.com/Macarun04/Medical_Record_Autotesting/actions/runs/45748025061/artifacts/15084601298
+2026-11-26T03:19:31.5603965Z ##[group]Run docker compose -f docker-compose.ci.yml down -v
+2026-11-26T03:19:31.5604849Z [36;1mdocker compose -f docker-compose.ci.yml down -v[0m
+2026-11-26T03:19:31.5636010Z shell: /usr/bin/bash -e {0}
+2026-11-26T03:19:31.5636642Z env:
+2026-11-26T03:19:31.5637331Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:31.5638139Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-26T03:19:31.5639173Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:31.5639876Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:31.5640567Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-26T03:19:31.5641263Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-26T03:19:31.5641897Z ##[endgroup]
+2026-11-26T03:19:31.6388558Z  Container ci-frontend Stopping 
+2026-11-26T03:19:31.7969363Z  Container ci-frontend Stopped 
+2026-11-26T03:19:31.7970601Z  Container ci-frontend Removing 
+2026-11-26T03:19:31.8087343Z  Container ci-frontend Removed 
+2026-11-26T03:19:31.8088371Z  Container ci-backend Stopping 
+2026-11-26T03:19:31.9219043Z  Container ci-backend Stopped 
+2026-11-26T03:19:31.9219777Z  Container ci-backend Removing 
+2026-11-26T03:19:31.9321596Z  Container ci-backend Removed 
+2026-11-26T03:19:31.9322409Z  Container ci-sqlserver Stopping 
+2026-11-26T03:19:42.0677710Z  Container ci-sqlserver Stopped 
+2026-11-26T03:19:42.0678752Z  Container ci-sqlserver Removing 
+2026-11-26T03:19:42.0863164Z  Container ci-sqlserver Removed 
+2026-11-26T03:19:42.0870161Z  Network medical_record_autotesting_default Removing 
+2026-11-26T03:19:42.1307397Z  Network medical_record_autotesting_default Removed 
+2026-11-26T03:19:42.1431545Z Post job cleanup.
+2026-11-26T03:19:42.2632858Z (node:4587) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-26T03:19:42.2634102Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-26T03:19:42.2964699Z Post job cleanup.
+2026-11-26T03:19:42.3824852Z [command]/usr/bin/git version
+2026-11-26T03:19:42.3864092Z git version 2.56.1
+2026-11-26T03:19:42.3896799Z Temporarily overriding HOME='/home/runner/work/_temp/c65a6c2f-3497-44f3-88d0-5b6a4be97480' before making global git config changes
+2026-11-26T03:19:42.3898148Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-26T03:19:42.3904118Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Medical_Record_Autotesting/Medical_Record_Autotesting
+2026-11-26T03:19:42.3944822Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-26T03:19:42.3978617Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-26T03:19:42.4242676Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-26T03:19:42.4265160Z http.https://github.com/.extraheader
+2026-11-26T03:19:42.4275072Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-26T03:19:42.4327583Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-26T03:19:42.4663942Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-26T03:19:42.4693666Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-26T03:19:42.5098588Z Cleaning up orphan processes
+2026-11-26T03:19:42.5435623Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
