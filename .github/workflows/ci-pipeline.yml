@@ -27,7 +27,9 @@ jobs:
           pip install pytest requests faker playwright allure-pytest pytest-cov
           playwright install --with-deps chromium
 
-      - name: Start SUT with Docker Compose CI
+      - name: Start SUT with Docker Compose CI (Branch Coverage Enabled)
+        env:
+          ENABLE_COVERAGE: "true"
         run: docker compose -f docker-compose.ci.yml up -d --build
 
       - name: Wait for SQL Server health-check and seed database
@@ -65,13 +67,20 @@ jobs:
           set -o pipefail
           pytest tests -v --alluredir=allure-results 2>&1 | tee artifacts/full-suite.log
 
+      - name: Collect backend branch coverage XML
+        if: always()
+        run: |
+          docker exec ci-backend /tools/dotnet-coverage shutdown sut-cov || true
+          docker wait ci-backend || true
+          docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml
+
       - name: Capture Docker container logs on failure
         if: failure()
         run: |
           mkdir -p artifacts
           docker compose -f docker-compose.ci.yml logs > artifacts/docker-sut.log
 
-      - name: Upload CI logs, screenshots and Allure results
+      - name: Upload CI logs, coverage and Allure results
         if: always()
         uses: actions/upload-artifact@v4
         with:
