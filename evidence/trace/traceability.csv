@@ -1,22 +1,22 @@
-Module	REQ_ID	System_Requirement	API_Test_Cases	UI_Test_Cases	Total_Mapped_Tests	Status
-1. X�c th?c & Ph�n quy?n (Auth)	REQ_01	"??ng nh?p th�nh c�ng, c?p ph�t Token v� chuy?n h??ng ?�ng vai tr� (B�c s?/B?nh nh�n)"	"TC_API1_01, TC_API1_02"	"TC_UI_01, TC_UI_02"	4	Covered
-1. X�c th?c & Ph�n quy?n (Auth)	REQ_02	"B?t l?i ??ng nh?p: sai th�ng tin, b? tr?ng form, sai ??nh d?ng payload"	"TC_API1_03, TC_API1_04, TC_API1_05"	"TC_UI_03, TC_UI_04"	5	Covered
-1. X�c th?c & Ph�n quy?n (Auth)	REQ_03	Ph�n quy?n truy c?p API v� UI (B?nh nh�n kh�ng ???c xem danh s�ch ho?c t?o ca kh�m; Block truy c?p kh�ng c� Token)	"TC_API3_04, TC_API4_05, TC_API6_05"	TC_UI_10	4	Covered
-2. Qu?n l� B?nh nh�n (Patient)	REQ_04	T?o h? s? b?nh nh�n th�nh c�ng v?i d? li?u h?p l? (t? ??ng sinh m�)	TC_API5_01		1	Covered
-2. Qu?n l� B?nh nh�n (Patient)	REQ_05	Ki?m so�t tr�ng l?p kh�a ch�nh (S? CCCD ?� t?n t?i)	TC_API5_02		1	Covered
-2. Qu?n l� B?nh nh�n (Patient)	REQ_06	R�ng bu?c d? li?u b?t bu?c (NOT NULL: nh�m ??nh danh v� nh�m li�n h?) v� validate ??nh d?ng DateTime	"TC_API5_03, TC_API5_04, TC_API5_05"		3	Covered
-3. Qu?n l� B�c s? (Doctor)	REQ_07	L?y danh s�ch b�c s? to�n vi?n	TC_API6_01		1	Covered
-3. Qu?n l� B�c s? (Doctor)	REQ_08	"L?c danh s�ch b�c s? theo chuy�n khoa (c� data, r?ng, v� x? l� URL Encoding)"	"TC_API6_02, TC_API6_03, TC_API6_04"		3	Covered
-4. Tra c?u B?nh nh�n (Search)	REQ_09	Tra c?u th�nh c�ng h? s? theo CCCD h?p l? v� hi?n th? giao di?n th? th�ng tin	TC_API2_01	TC_UI_05	2	Covered
-4. Tra c?u B?nh nh�n (Search)	REQ_10	Tr? m� l?i 404 v� hi?n th? th�ng b�o r� r�ng tr�n giao di?n khi tra c?u CCCD kh�ng t?n t?i	TC_API2_02	TC_UI_06	2	Covered
-4. Tra c?u B?nh nh�n (Search)	REQ_11	"B?t l?i validation CCCD (sai ?? d�i, ch?a k� t? ??c bi?t, b? tr?ng tham s?)"	"TC_API2_03, TC_API2_04, TC_API2_05"		3	Covered
-5. Qu?n l� L?ch s? (Timeline)	REQ_12	Hi?n th? ?�ng danh s�ch c�c ca kh�m theo d�ng th?i gian c?a b?nh nh�n c? th?	"TC_API3_01, TC_API3_02"	"TC_UI_07, TC_UI_10"	4	Covered
-5. Qu?n l� L?ch s? (Timeline)	REQ_13	X? l� l?i khi truy c?p timeline c?a b?nh nh�n kh�ng t?n t?i	TC_API3_03		1	Covered
-5. Qu?n l� L?ch s? (Timeline)	REQ_14	Ng?n ch?n t?n c�ng Injection (SQLi) th�ng qua param m� b?nh nh�n tr�n URL	TC_API3_05		1	Covered
-6. T?o Ca Kh�m (Record)	REQ_15	L?u ca kh�m m?i th�nh c�ng (c? tr??ng h?p ??y ?? v� thi?u tr??ng t�y ch?n)	"TC_API4_01, TC_API4_02"	TC_UI_09	3	Covered
-6. T?o Ca Kh�m (Record)	REQ_16	"Ki?m so�t t�nh to�n v?n d? li?u: B? tr?ng tr??ng b?t bu?c, v??t gi?i h?n k� t? (Max Length 2000)"	"TC_API4_03, TC_API4_04"	TC_UI_08	3	Covered
-7. T?o h? s? B�c S?	REQ_17	T?o h? s? b�c s? m?i th�nh c�ng v?i th�ng tin h?p l? (quy?n Admin)	TC_API7_01		1	Covered
-7. T?o h? s? B�c S?	REQ_18	Ch?n tr�ng l?p m� B�c s? v� b?t l?i thi?u th�ng tin b?t bu?c	"TC_API7_02, TC_API7_03"		2	Covered
-7. T?o h? s? B�c S?	REQ_19	Ki?m so�t x�c th?c v� ph�n quy?n API t?o b�c s? (ch?n truy c?p kh�ng c� Token v� ch?n B�c s? t?o h? s?(ch? Admin))	"TC_API7_04, TC_API7_05"		2	Covered
-8. L?y danh s�ch B?nh nh�n	REQ_20	"L?y danh s�ch b?nh nh�n to�n vi?n, l?c d? li?u r?ng v� ki?m th? bi�n v?i tham s? ph�n trang"	"TC_API8_01, TC_API8_02, TC_API8_03"		3	Covered
-8. L?y danh s�ch B?nh nh�n	REQ_21	Ki?m so�t x�c th?c v� ph�n quy?n truy c?p API danh s�ch b?nh nh�n (ch?n truy c?p kh�ng c� Token v� ch?n B?nh nh�n xem danh s�ch to�n vi?n)	"TC_API8_04, TC_API8_05"		2	Covered
+Module,REQ_ID,System_Requirement,API_Test_Cases,UI_Test_Cases,Total_Mapped_Tests,Status
+1. Xác thực & Phân quyền (Auth),REQ_01,"Đăng nhập thành công, cấp phát Token và chuyển hướng đúng vai trò (Bác sĩ/Bệnh nhân)","TC_API1_01, TC_API1_02","TC_UI_01, TC_UI_02",4,Covered
+1. Xác thực & Phân quyền (Auth),REQ_02,"Bắt lỗi đăng nhập: sai thông tin, bỏ trống form, sai định dạng payload","TC_API1_03, TC_API1_04, TC_API1_05","TC_UI_03, TC_UI_04",5,Covered
+1. Xác thực & Phân quyền (Auth),REQ_03,"Phân quyền truy cập API và UI (Bệnh nhân không được xem danh sách hoặc tạo ca khám; Block truy cập không có Token)","TC_API3_04, TC_API4_05, TC_API6_05",TC_UI_10,4,Covered
+2. Quản lý Bệnh nhân (Patient),REQ_04,"Tạo hồ sơ bệnh nhân thành công với dữ liệu hợp lệ (tự động sinh mã)",TC_API5_01,,1,Covered
+2. Quản lý Bệnh nhân (Patient),REQ_05,"Kiểm soát trùng lặp khóa chính (Số CCCD đã tồn tại)",TC_API5_02,,1,Covered
+2. Quản lý Bệnh nhân (Patient),REQ_06,"Ràng buộc dữ liệu bắt buộc (NOT NULL: nhóm định danh và nhóm liên hệ) và validate định dạng DateTime","TC_API5_03, TC_API5_04, TC_API5_05",,3,Covered
+3. Quản lý Bác sĩ (Doctor),REQ_07,"Lấy danh sách bác sĩ toàn viện",TC_API6_01,,1,Covered
+3. Quản lý Bác sĩ (Doctor),REQ_08,"Lọc danh sách bác sĩ theo chuyên khoa (có data, rỗng, và xử lý URL Encoding)","TC_API6_02, TC_API6_03, TC_API6_04",,3,Covered
+4. Tra cứu Bệnh nhân (Search),REQ_09,"Tra cứu thành công hồ sơ theo CCCD hợp lệ và hiển thị giao diện thẻ thông tin",TC_API2_01,TC_UI_05,2,Covered
+4. Tra cứu Bệnh nhân (Search),REQ_10,"Trả mã lỗi 404 và hiển thị thông báo rõ ràng trên giao diện khi tra cứu CCCD không tồn tại",TC_API2_02,TC_UI_06,2,Covered
+4. Tra cứu Bệnh nhân (Search),REQ_11,"Bắt lỗi validation CCCD (sai độ dài, chứa ký tự đặc biệt, bỏ trống tham số)","TC_API2_03, TC_API2_04, TC_API2_05",,3,Covered
+5. Quản lý Lịch sử (Timeline),REQ_12,"Hiển thị đúng danh sách các ca khám theo dòng thời gian của bệnh nhân cụ thể","TC_API3_01, TC_API3_02","TC_UI_07, TC_UI_10",4,Covered
+5. Quản lý Lịch sử (Timeline),REQ_13,"Xử lý lỗi khi truy cập timeline của bệnh nhân không tồn tại",TC_API3_03,,1,Covered
+5. Quản lý Lịch sử (Timeline),REQ_14,"Ngăn chặn tấn công Injection (SQLi) thông qua param mã bệnh nhân trên URL",TC_API3_05,,1,Covered
+6. Tạo Ca Khám (Record),REQ_15,"Lưu ca khám mới thành công (cả trường hợp đầy đủ và thiếu trường tùy chọn)","TC_API4_01, TC_API4_02",TC_UI_09,3,Covered
+6. Tạo Ca Khám (Record),REQ_16,"Kiểm soát tính toàn vẹn dữ liệu: Bỏ trống trường bắt buộc, vượt giới hạn ký tự (Max Length 2000)","TC_API4_03, TC_API4_04",TC_UI_08,3,Covered
+7. Tạo hồ sơ Bác Sĩ,REQ_17,"Tạo hồ sơ bác sĩ mới thành công với thông tin hợp lệ (quyền Admin)",TC_API7_01,,1,Covered
+7. Tạo hồ sơ Bác Sĩ,REQ_18,"Chặn trùng lặp mã Bác sĩ và bắt lỗi thiếu thông tin bắt buộc","TC_API7_02, TC_API7_03",,2,Covered
+7. Tạo hồ sơ Bác Sĩ,REQ_19,"Kiểm soát xác thực và phân quyền API tạo bác sĩ (chặn truy cập không có Token và chặn Bác sĩ tạo hồ sơ (chỉ Admin))","TC_API7_04, TC_API7_05",,2,Covered
+8. Lấy danh sách Bệnh nhân,REQ_20,"Lấy danh sách bệnh nhân toàn viện, lọc dữ liệu rỗng và kiểm thử biên với tham số phân trang","TC_API8_01, TC_API8_02, TC_API8_03",,3,Covered
+8. Lấy danh sách Bệnh nhân,REQ_21,"Kiểm soát xác thực và phân quyền truy cập API danh sách bệnh nhân (chặn truy cập không có Token và chặn Bệnh nhân xem danh sách toàn viện)","TC_API8_04, TC_API8_05",,2,Covered

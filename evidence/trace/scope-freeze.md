@@ -8,7 +8,7 @@
 | :--- | :--- | :---: | :--- |
 | **Màn hình 1: Đăng nhập (login.html)** | Đăng nhập Bác sĩ/Bệnh nhân, bắt lỗi sai mật khẩu, validate bỏ trống trường | 4 E2E | TC_UI_01 -> TC_UI_04 |
 | **Màn hình 2: Tra cứu Bệnh nhân (search.html)** | Bác sĩ tìm hồ sơ theo CCCD (tồn tại / không tồn tại) | 2 E2E | TC_UI_05 -> TC_UI_06 |
-| **Màn hình 3: Lịch sử Khám (	imeline.html)** | Bác sĩ xem lịch sử ca khám; Bệnh nhân xem đúng timeline cá nhân | 2 E2E | TC_UI_07, TC_UI_10 |
+| **Màn hình 3: Lịch sử Khám (timeline.html)** | Bác sĩ xem lịch sử ca khám; Bệnh nhân xem đúng timeline cá nhân | 2 E2E | TC_UI_07, TC_UI_10 |
 | **Màn hình 4: Thêm Ca Khám (Modal/Form)** | Validate thiếu triệu chứng/chẩn đoán; tạo mới và cập nhật timeline | 2 E2E | TC_UI_08 -> TC_UI_09 |
 | **API 1: Đăng nhập (POST /api/v1/auth/login)** | Happy path (BS/BN), sai mật khẩu, body rỗng, sai định dạng | 5 API | TC_API1_01 -> TC_API1_05 |
 | **API 2: Tra cứu CCCD (GET /api/v1/patients/search)** | Tìm thấy, không thấy (404), sai độ dài, ký tự lạ, thiếu param | 5 API | TC_API2_01 -> TC_API2_05 |

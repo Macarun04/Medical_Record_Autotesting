@@ -33,3 +33,4 @@ playwright/.cache/
 .idea/
 .DS_Store
 Thumbs.db
+!evidence/metrics/coverage.xml
