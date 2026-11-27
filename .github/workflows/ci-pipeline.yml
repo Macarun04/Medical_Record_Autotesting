@@ -46,15 +46,22 @@ jobs:
 
       - name: Wait for Backend and Frontend health-check
         run: |
+          READY=0
           for i in $(seq 1 25); do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://localhost:7053/api/v1/auth/login -H "Content-Type: application/json" -d '{}')
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://localhost:7053/api/v1/auth/login -H "Content-Type: application/json" -d '{}' || true)
             if [ "$STATUS" = "400" ] || [ "$STATUS" = "200" ] || [ "$STATUS" = "401" ]; then
               echo "Backend is ready (HTTP $STATUS)!"
+              READY=1
               break
             fi
-            echo "Waiting for Backend... ($i/25)"
+            echo "Waiting for Backend... ($i/25) [HTTP $STATUS]"
             sleep 3
           done
+          if [ "$READY" -ne 1 ]; then
+            echo "Backend failed to start!"
+            docker logs ci-backend || true
+            exit 1
+          fi
           curl -sf http://localhost:5500/login.html > /dev/null && echo "Frontend is ready!"
 
       - name: Run full test suite (50 tests)
@@ -67,21 +74,19 @@ jobs:
           set -o pipefail
           pytest tests -v --alluredir=allure-results 2>&1 | tee artifacts/full-suite.log
 
-      - name: Collect backend coverage XML if present
+      - name: Collect backend branch coverage XML
         if: always()
         run: |
           mkdir -p artifacts
-          if [ -f artifacts/coverage.xml ]; then
-            echo "Found artifacts/coverage.xml"
-          else
-            docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml 2>/dev/null || echo "No coverage.xml generated in this run"
-          fi
+          docker exec ci-backend /tools/dotnet-coverage shutdown sut-cov || true
+          docker wait ci-backend || true
+          docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml || true
 
       - name: Capture Docker container logs on failure
         if: failure()
         run: |
           mkdir -p artifacts
-          docker compose -f docker-compose.ci.yml logs > artifacts/docker-sut.log
+          docker compose -f docker-compose.ci.yml logs > artifacts/docker-sut.log || true
 
       - name: Upload CI logs, coverage and Allure results
         if: always()

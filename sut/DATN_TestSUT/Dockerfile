@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-# Cài công cụ đo branch coverage chính chủ của .NET
 RUN dotnet tool install --global dotnet-coverage
 
 COPY ["DATN_TestSUT.csproj", "./"]
