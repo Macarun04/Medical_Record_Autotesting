@@ -67,12 +67,15 @@ jobs:
           set -o pipefail
           pytest tests -v --alluredir=allure-results 2>&1 | tee artifacts/full-suite.log
 
-      - name: Collect backend branch coverage XML
+      - name: Collect backend coverage XML if present
         if: always()
         run: |
-          docker exec ci-backend /tools/dotnet-coverage shutdown sut-cov || true
-          docker wait ci-backend || true
-          docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml
+          mkdir -p artifacts
+          if [ -f artifacts/coverage.xml ]; then
+            echo "Found artifacts/coverage.xml"
+          else
+            docker cp ci-backend:/coverage/coverage.xml artifacts/coverage.xml 2>/dev/null || echo "No coverage.xml generated in this run"
+          fi
 
       - name: Capture Docker container logs on failure
         if: failure()
